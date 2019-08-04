@@ -1,0 +1,29 @@
+name	triarrow
+type	none
+shadow	0
+nolife  1
+speed   35
+Antigravity 100
+candamage enemy obstacle
+
+
+
+
+
+
+
+
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitfx	data/sounds/cut1.wav
+	hitflash	cut1
+	forcedirection	-1
+	blast	81 63 34 8 25 1 0 0 0 20
+	frame	data/chars/hawkeye/qa1.png
+	frame	data/chars/hawkeye/qa2.png
+	frame	data/chars/hawkeye/qa3.png
+		
+#|edited by openBor Stats v 0.67
+		

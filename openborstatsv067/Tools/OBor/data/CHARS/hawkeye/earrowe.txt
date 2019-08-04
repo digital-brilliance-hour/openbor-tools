@@ -1,0 +1,34 @@
+name	earrowe
+type	none
+shadow	0
+nolife  1
+Antigravity 100
+candamage player NPC obstacle
+
+
+
+
+
+
+
+
+
+
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitflash	sflash
+	shock	81 63 34 8 15 1 0 0 5 10
+	dropv	4 3
+	frame	data/chars/hawkeye/ea1.png
+	frame	data/chars/hawkeye/ea5.png
+	frame	data/chars/hawkeye/ea2.png
+	frame	data/chars/hawkeye/ea5.png
+	frame	data/chars/hawkeye/ea3.png
+	frame	data/chars/hawkeye/ea5.png
+	frame	data/chars/hawkeye/ea4.png
+	frame	data/chars/hawkeye/ea5.png
+		
+#|edited by openBor Stats v 0.67
+		

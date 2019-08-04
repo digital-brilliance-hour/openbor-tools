@@ -1,0 +1,21 @@
+name  arricons
+health	 1
+nolife  1
+noatflash 1
+type  panel
+speed 10
+gfxshadow	1
+offscreenkill 1000000
+
+anim	idle
+	loop	0
+	delay	-1
+	offset	1 1
+	frame	Data/chars/hawkeye/1.gif
+	frame	Data/chars/hawkeye/2.gif
+	frame	Data/chars/hawkeye/3.gif
+	frame	Data/chars/hawkeye/4.gif
+	frame	Data/chars/hawkeye/5.gif
+		
+#|edited by openBor Stats v 0.66
+		

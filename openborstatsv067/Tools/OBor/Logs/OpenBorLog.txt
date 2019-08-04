@@ -1,0 +1,27 @@
+Total Ram: 4294967295 Bytes
+ Free Ram: 4294967295 Bytes
+ Used Ram: 2797568 Bytes
+
+OpenBoR v3.0 Build 3192, Compile Date: Mar 11 2011
+
+Game Selected: ./Paks/bor.pak
+
+FileCaching System Init......	Disabled
+Initializing video............
+Reading video settings from 'data/video.txt'.
+WARNING: data/video.txt tries to load a nonnumeric value at video, where a number is expected!
+erroneus string: =
+Initialized video.............	320x240 (Mode: 0, Depth: 16 Bit)
+
+Loading menu.txt.............	Done!
+Loading fonts................	Done!
+Timer init...................	Done!
+Initialize Sound..............	
+sound_load_sample: Failed to load: data/sounds/go.wav
+
+sound_load_sample: Failed to load: data/sounds/block.wav
+
+Loading sprites..............	Done!
+Loading level order..........	Done!
+Loading script settings......	Done!
+Loading scripts..............	

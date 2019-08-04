@@ -1,0 +1,1580 @@
+name	 Hawkeye
+health  200
+speed	 12
+mp 100
+type	 player
+shadow	 3
+gfxshadow 1
+icon	 data/chars/hawkeye/icon.gif 1
+iconpain  data/chars/hawkeye/iconpain.gif 1
+diesound data/chars/hawkeye/die.wav
+makeinv	 3
+riseinv 1 1
+jumpmove  3  2
+atchain 1 1 2 3
+dust po
+
+weapons   a_HawkNave Hawkeye
+
+grabdistance 22
+grabback 1
+
+com      d f a freespecial8
+com      d u a freespecial2
+com      d u d s freespecial4
+com      d d a freespecial9
+com	a2 freespecial6
+com	d u a2 freespecial20 #id
+
+bflash 		bflash
+
+running  24  4.0  2  0  0
+animationscript data/scripts/grabscript.c
+ondeathscript data/scripts/dead.c
+
+parrow data/sprites/hkparrow.gif -25 -110
+parrow2 data/sprites/hkparrow2.gif -25 -110
+
+palette       data/chars/hawkeye/0SMARTPAL_BASE-NEW_CLASSIC.gif
+alternatepal  data/chars/hawkeye/0SMARTPAL-DARKAVENGERS.gif
+alternatepal  data/chars/hawkeye/0SMARTPAL_BASE-PAL3-V2.gif
+alternatepal  data/chars/hawkeye/0SMARTPAL_BASE-PAL4-REMIX.gif
+alternatepal  data/chars/hawkeye/0SMARTPAL_BASE-CLASSICARCADE_V3-v3.gif
+alternatepal  data/chars/hawkeye/0SMARTPAL_Barney_Barton.gif
+alternatepal  data/chars/hawkeye/freeze.gif
+alternatepal  data/chars/hawkeye/venon.gif
+fmap 6
+hmap 7 7
+
+load 	 bioshawk
+load	 arrow
+load	 farrow
+load	 narrow
+load	 harrow
+load	 frarrow
+load	 earrow
+load 	 triarrow
+load     darrow
+load	 fpillar
+load     a_HawkNave
+
+onspawnscript @script
+
+
+    void main()
+    {
+
+void self = getlocalvar("self");
+
+if(!getglobalvar("a0"+self))setglobalvar("a0"+self ,loadsprite("data/chars/hawkeye/1.gif"));
+if(!getglobalvar("a1"+self))setglobalvar("a1"+self ,loadsprite("data/chars/hawkeye/2.gif"));
+if(!getglobalvar("a2"+self))setglobalvar("a2"+self ,loadsprite("data/chars/hawkeye/3.gif"));
+if(!getglobalvar("a3"+self))setglobalvar("a3"+self ,loadsprite("data/chars/hawkeye/4.gif"));
+if(!getglobalvar("a4"+self))setglobalvar("a4"+self ,loadsprite("data/chars/hawkeye/5.gif"));
+if(!getglobalvar("a5"+self))setglobalvar("a5"+self ,loadsprite("data/chars/hawkeye/6.gif"));
+if(getglobalvar("arrowControl" + self)==NULL() || getglobalvar("arrowControl" + self)<1)
+{
+setglobalvar("arrowControl"+self, 0);
+}
+
+    }
+
+@end_script
+
+ondrawscript  @script
+
+
+
+void main()
+{
+void self = getlocalvar("self");
+setglobalvar("gself",self);
+
+void a0   = getglobalvar("a0" + self);
+void a1   = getglobalvar("a1" + self);
+void a2   = getglobalvar("a2" + self);
+void a3   = getglobalvar("a3" + self);
+void a4   = getglobalvar("a4" + self);
+void a5   = getglobalvar("a5" + self);
+
+int posy = 242;
+
+if(getglobalvar("arrowControl" + self)== 0)setglobalvar("arrow_icon"+self, a0);
+if(getglobalvar("arrowControl" + self)== 1)setglobalvar("arrow_icon"+self, a1);
+if(getglobalvar("arrowControl" + self)== 2)setglobalvar("arrow_icon"+self, a2);
+if(getglobalvar("arrowControl" + self)== 3)setglobalvar("arrow_icon"+self, a3);
+if(getglobalvar("arrowControl" + self)== 4)setglobalvar("arrow_icon"+self, a4);
+if(getglobalvar("arrowControl" + self)== 5)setglobalvar("arrow_icon"+self, a5);
+
+
+
+if(getentityproperty(self,"health")>0)
+{
+void arrow_icon = getglobalvar("arrow_icon"+self);
+if(self == getplayerproperty(0,"ent")) drawsprite(arrow_icon, 150, posy, 70050, 0);
+if(self == getplayerproperty(1,"ent")) drawsprite(arrow_icon, 300, posy, 70050, 0);
+ }
+
+
+
+}
+
+
+void ondestroy()
+{
+void self = getglobalvar("gself");
+
+     	  setglobalvar("arrow_icon"+self, NULL());
+         setglobalvar("arrowControl"+self, NULL());
+
+
+if(getglobalvar("a0"+self)!=NULL())
+    {
+        free(getglobalvar("a0" + self));
+        setglobalvar("a0" + self,  NULL());
+    }
+ if(getglobalvar("a1"+self)!=NULL())
+    {
+        free(getglobalvar("a1" + self));
+        setglobalvar("a1" + self,  NULL());
+    }
+
+    if(getglobalvar("a2"+self)!=NULL())
+    {
+        free(getglobalvar("a2" + self));
+        setglobalvar("a2" + self,  NULL());
+    }
+ if(getglobalvar("a3"+self)!=NULL())
+    {
+        free(getglobalvar("a3" + self));
+        setglobalvar("a3" + self,  NULL());
+    }
+  if(getglobalvar("a4"+self)!=NULL())
+    {
+        free(getglobalvar("a4" + self));
+        setglobalvar("a4" + self,  NULL());
+    }
+  if(getglobalvar("a5"+self)!=NULL())
+    {
+        free(getglobalvar("a5" + self));
+        setglobalvar("a5" + self,  NULL());
+    }
+     setglobalvar("gself",NULL()) ;
+
+}
+@end_script
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	loop	0
+	delay	3
+	offset	68 110
+	bbox	52 56 33 54
+	hitflash	flash
+	frame	data/chars/hawkeye/w1.gif
+	frame	data/chars/hawkeye/att0.gif
+	delay	8
+	attack	75 53 37 26 10 0 0 0 0 15
+	sound	data/chars/hawkeye/att1.wav
+	frame	data/chars/hawkeye/att1.gif
+	delay	6
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/att12.gif
+		
+anim	attack2
+	loop	0
+	delay	4
+	offset	68 110
+	bbox	67 52 24 58
+	hitflash	flash2
+	frame	data/chars/hawkeye/att3.gif
+	offset	62 110
+	delay	5
+	attack	63 52 31 59 10 0 0 0 0 5
+	frame	data/chars/hawkeye/att31.gif
+	attack	58 37 44 74 15 0 0 0 0 15
+	bbox	68 55 29 55
+	sound	data/chars/hawkeye/att2.wav
+	frame	data/chars/hawkeye/att32.gif
+	delay	4
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/att31.gif
+		
+anim	attack3
+	loop	0
+	delay	6
+	offset	68 110
+	bbox	60 52 24 58
+	hitflash	flash4
+	@script
+	if(frame==0){
+	void vSelf = getlocalvar("self");
+	int r = rand()%30;
+	    if(r > 0){
+	    changeentityproperty(vSelf,"animation",openborconstant("ANI_ATTACK4"));
+	    }
+	}
+	@end_script	
+	frame	data/chars/hawkeye/att23.gif
+	sound	data/chars/hawkeye/att3.wav
+	frame	data/chars/hawkeye/finish1.gif
+	sound	data/sounds/vuu.wav
+	frame	data/chars/hawkeye/finish2.gif
+	attack	68 66 57 50 15 1 0 0 5 20
+	dropv	2 3
+	frame	data/chars/hawkeye/finish3.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	20
+	frame	data/chars/hawkeye/finish4.gif
+	delay	10
+	attack	0
+	frame	data/chars/hawkeye/rise3.gif
+	frame	data/chars/hawkeye/att23.gif
+		
+anim	attack4
+	loop	0
+	delay	6
+	offset	68 110
+	bbox	60 52 24 58
+	hitflash	flash2
+	fastattack	1
+	sound	data/chars/hawkeye/att6.wav
+	frame	data/chars/hawkeye/free13-3.gif
+	frame	data/chars/hawkeye/free13-2.gif
+	bbox	74 64 26 46
+	offset	88 110
+	delay	3
+	attack	91 50 48 42 2 0 0 0 1 20
+	frame	data/chars/hawkeye/giroa1.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/giroa2.gif
+	frame	data/chars/hawkeye/giroa3.gif
+	attack	91 50 48 42 2 0 0 0 1 0
+	frame	data/chars/hawkeye/giroa1.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/giroa2.gif
+	frame	data/chars/hawkeye/giroa3.gif
+	attack	91 50 48 42 2 0 0 0 1 20
+	frame	data/chars/hawkeye/giroa1.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/giroa2.gif
+	frame	data/chars/hawkeye/giroa3.gif
+	attack	91 50 48 42 2 0 0 0 1 20
+	frame	data/chars/hawkeye/giroa1.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/giroa2.gif
+	frame	data/chars/hawkeye/giroa3.gif
+	attack	91 50 48 42 2 0 0 0 1 20
+	frame	data/chars/hawkeye/giroa1.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/giroa2.gif
+	frame	data/chars/hawkeye/giroa3.gif
+	bbox	56 63 32 47
+	offset	68 110
+	delay	4
+	attack	0 0 0 0 0 0 0 0 0 0
+	sound	data/chars/hawkeye/att4.wav
+	frame	data/chars/hawkeye/att23.gif
+	frame	data/chars/hawkeye/change1.gif
+	attack	69 46 43 64 15 1 0 0 5 20
+	bbox	68 55 29 55
+	frame	data/chars/hawkeye/att1.gif
+	delay	25
+	frame	data/chars/hawkeye/att22.gif
+	delay	10
+	attack	0
+	frame	data/chars/hawkeye/att23.gif
+		
+anim	burn
+	loop	0
+	delay	60
+	landframe	2
+	offset	92 115
+		@script
+		if(frame==0)
+		{
+    void self = getlocalvar("self");
+    void e;
+    clearspawnentry();
+    setspawnentry("name", "burnP");
+    e = spawn();
+    bindentity(e, self,0,1,0,1,1);
+		}
+	@end_script	
+	frame	data/chars/misc/empty.gif
+	offset	92 115
+	delay	500
+	offset	68 110
+	frame	data/chars/hawkeye/fall1.gif
+	bbox	0 0 0 0
+	delay	10
+	frame	data/chars/hawkeye/fall2.gif
+		
+anim	cant
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	56 73 26 37
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	chargeattack
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	50 56 40 54
+	Energycost	10 1 0
+	sound	data/chars/hawkeye/net.wav
+	frame	data/chars/hawkeye/free13.gif
+	frame	data/chars/hawkeye/free13-2.gif
+	delay	10
+	frame	data/chars/hawkeye/free11.gif
+	delay	4
+	@cmd	shooter "narrow" 10 42 -1 6 0 0
+	frame	data/chars/hawkeye/free12b.gif
+	frame	data/chars/hawkeye/free12c.gif
+	sound	data/chars/hawkeye/arrow.wav
+	delay	15
+	frame	data/chars/hawkeye/free12.gif
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	duck
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	56 73 26 37
+	frame	data/chars/hawkeye/rise3.gif
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	fall
+	loop	0
+	delay	10
+	offset	68 110
+	landframe	4
+	frame	data/chars/hawkeye/pain2.gif
+	frame	data/chars/hawkeye/pain3.gif
+	frame	data/chars/hawkeye/fall1.gif
+	delay	30
+	frame	data/chars/hawkeye/pain4.gif
+	frame	data/chars/hawkeye/fall2.gif
+		
+anim	follow60
+	loop	1 2 4
+	delay	6
+	offset	68 110
+	bbox	50 56 40 54
+ @script
+    void self = getlocalvar("self");
+     int x = getentityproperty(self, "x");
+    if(x>=5)
+    {
+      performattack(getlocalvar("self"), openborconstant("ANI_FOLLOW61"));
+    }
+	@end_script	
+	@cmd	subjectScreen 0
+	@cmd	shooter "frarrow" 10 42 -1 2 0 0
+	sound	data/chars/hawkeye/freeze.wav
+	frame	none
+	delay	6
+	@cmd	velo001 2.75 0 0
+	frame	data/chars/hawkeye/w1.gif
+	frame	data/chars/hawkeye/w2.gif
+	frame	data/chars/hawkeye/w3.gif
+		
+anim	follow61
+	loop	0
+	delay	10
+	offset	68 110
+	bbox	55 78 27 32
+	frame	data/chars/hawkeye/land.gif
+	attack	59 88 51 23 10 1 0 0 15 10
+	delay	4
+	bbox	40 86 70 24
+	@cmd	noplayerJoin 0
+	@cmd	subjectScreen 1
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 3 NULL() NULL()
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide3.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	@cmd	velo001 2 NULL() NULL()
+	frame	data/chars/hawkeye/slide3.gif
+	delay	10
+	frame	data/chars/hawkeye/slide.gif
+	bbox	55 78 27 32
+	@cmd	velo001 1 NULL() NULL()
+	frame	data/chars/hawkeye/land.gif
+		
+anim	follow62
+	loop	1 1 5
+	delay	15
+	offset	68 110
+	bbox	56 55 24 55
+        	@script
+    void self = getlocalvar("self");
+    int Summon = getentityvar(self, 1);
+
+    if(frame==0){
+      setentityvar(self, 1, openborvariant("elapsed_time"));
+    }
+    if(Summon <= openborvariant("elapsed_time") - 2000){
+      setentityvar(self, 1, NULL());
+      performattack(self,openborconstant("ANI_ATTACK2"));
+    }
+	@end_script	
+	frame	data/chars/hawkeye/id1.gif
+	frame	data/chars/hawkeye/id2.gif
+	frame	data/chars/hawkeye/id3.gif
+	frame	data/chars/hawkeye/id2.gif
+	frame	data/chars/hawkeye/id1.gif
+		
+anim	follow63
+	loop	0
+	delay	120
+	offset	68 110
+	bbox	55 47 25 45
+	landframe	8
+	@cmd	subjectWall 0
+	@cmd	subjectScreen 0
+	delay	100
+	frame	data/chars/hawkeye/j2.gif
+	delay	12
+	@cmd	shooter "triarrow" 10 42 -10 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	@cmd	shooter "triarrow" 10 42 -1 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	@cmd	shooter "triarrow" 10 42 10 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	@cmd	shooter "triarrow" 10 42 0 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	@cmd	shooter "triarrow" 10 42 -10 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	delay	30
+	@cmd	shooter "triarrow" 10 42 -1 6 0 0
+	frame	data/chars/hawkeye/j2.gif
+	delay	4
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 4.5 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide3.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	@cmd	velo001 2 NULL() NULL()
+	frame	data/chars/hawkeye/slide3.gif
+	delay	10
+	frame	data/chars/hawkeye/slide.gif
+	bbox	55 78 27 32
+	@cmd	velo001 1 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/land.gif
+	@cmd	noplayerJoin 0
+	@cmd	subjectScreen 1
+	@cmd	subjectWall 1
+	frame	data/chars/hawkeye/att31.gif
+		
+anim	follow64
+	loop	0
+	delay	350
+	offset	68 110
+	bbox	55 47 25 45
+	landframe	2
+	@cmd	subjectWall 0
+	@cmd	subjectScreen 0
+	frame	data/chars/hawkeye/j2.gif
+	delay	500
+	bbox	55 47 44 45
+	blast	61 48 52 56 300 90 0 0 0 200
+	dropv	2 3
+	@cmd	velo001 5 NULL() 2.5
+	sound	data/chars/hawkeye/att3.wav
+	frame	data/chars/hawkeye/j-att2.gif
+	bbox	50 64 35 47
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	20
+	sound	data/chars/ironman/run.wav
+	@cmd	spawn01 "po" 0 0 0
+	frame	data/chars/hawkeye/land.gif
+	delay	10
+	frame	data/chars/hawkeye/free13-3.gif
+	frame	data/chars/hawkeye/att3.gif
+	offset	62 110
+	delay	5
+	attack	63 52 31 59 10 0 0 0 0 5
+	frame	data/chars/hawkeye/att31.gif
+	delay	60
+	attack	58 37 44 74 15 0 0 0 0 5
+	bbox	68 55 29 55
+	sound	data/chars/hawkeye/select.wav
+	frame	data/chars/hawkeye/att32.gif
+	delay	4
+	attack	0 0 0 0 0 0 0 0 0 0
+	@cmd	noplayerJoin 0
+	@cmd	subjectScreen 1
+	@cmd	subjectWall 1
+	frame	data/chars/hawkeye/att31.gif
+		
+anim	follow65
+	loop	0
+	offset	68 110
+	bbox	46 78 35 37
+	delay	30
+	jumpframe	1 -0.75 0 0
+	landframe	2
+ @script
+    void self = getlocalvar("self");
+    int y = getentityproperty(self, "y");
+    if(y<=10)
+    {
+      performattack(getlocalvar("self"), openborconstant("ANI_FOLLOW66"));
+    }
+	@end_script	
+	@cmd	move 0 0 200
+	@cmd	degravity 1
+	@cmd	subjectScreen 0
+	frame	none
+	delay	1000
+	frame	data/chars/hawkeye/rise.gif
+	delay	10
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	follow66
+	loop	0
+	delay	10
+	jumpframe	0 2 0 1
+	dropframe	1
+	landframe	2
+	offset	68 110
+	bbox	56 49 26 50
+	sound	data/sounds/jump.wav
+	@cmd	degravity 0
+	frame	data/chars/hawkeye/j.gif
+	delay	100
+	frame	data/chars/hawkeye/j3.gif
+	delay	10
+	@cmd	subjectScreen 1
+	frame	data/chars/hawkeye/land.gif
+		
+anim	freespecial
+	loop	0
+	delay	6
+	offset	68 110
+	bbox	50 56 40 54
+	Energycost	5 1 0
+	@cmd	spawn01 "sdust" 0 0 0
+	frame	data/chars/hawkeye/free13.gif
+	frame	data/chars/hawkeye/free13-2.gif
+	frame	data/chars/hawkeye/free11.gif
+	@script
+	if(frame==0)
+	{
+	       int SFX1 = loadsample("data/chars/hawkeye/shoot.wav");
+	       int SFX2 = loadsample("data/chars/hawkeye/arrow2.wav");
+	       void vSelf = getlocalvar("self");
+      	       int r = rand()%30;
+      	       if(r > 0){
+               playsample(SFX1, 0, 120, 120, 100, 0);
+    			 }
+    			 if(r < 0){
+               playsample(SFX2, 0, 120, 120, 100, 0);
+    			 }
+        }
+	@end_script	
+	@cmd	checkPal2 "ANI_CANT" 7
+	frame	data/chars/hawkeye/free12b.gif
+	@cmd	shooter "narrow" 10 42 -1 2 0 0
+	sound	data/chars/hawkeye/arrow.wav
+	frame	data/chars/hawkeye/free12c.gif
+	delay	10
+	frame	data/chars/hawkeye/free12.gif
+	delay	6
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	freespecial10
+	bbox	55 49 29 37
+	loop	0
+	delay	4
+	offset	68 110
+	Energycost	5 1 0
+	landframe	6
+	@script
+    void self = getlocalvar("self");
+    if(frame==0){
+      changeentityproperty(self, "aiflag", "jumping", 0);
+      changeentityproperty(self, "aiflag", "attacking", 1);
+    }
+
+	@end_script	
+	@cmd	checkPal2 "ANI_JUMP" 7
+	frame	data/chars/hawkeye/rj1.gif
+	delay	4
+	frame	data/chars/hawkeye/hyper1.gif
+	delay	4
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 23 43 0
+	frame	data/chars/hawkeye/hyper2.gif
+	delay	20
+	frame	data/chars/hawkeye/hyper3.gif
+	delay	4
+	frame	data/chars/hawkeye/j3.gif
+	delay	500
+	frame	data/chars/hawkeye/j.gif
+	bbox	58 70 24 40
+	delay	12
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	freespecial2
+	loop	0
+	delay	6
+	offset	68 110
+	fastattack	1
+	hitflash	flash2
+	Energycost	10 1 0
+	landframe	22
+	@cmd	velo001	3 NULL() NULL()
+	@cmd	spawn01 "sdust" 0 0 0
+	frame	data/chars/hawkeye/r3.gif
+		@script
+	if(frame==0)
+	{
+	       int SFX1 = loadsample("data/chars/hawkeye/u.wav");
+	       int SFX2 = loadsample("data/chars/hawkeye/u2.wav");
+	       void vSelf = getlocalvar("self");
+      	       int r = rand()%30;
+      	       if(r > 0){
+               playsample(SFX1, 0, 120, 120, 100, 0);
+    			 }
+    			 if(r < 0){
+               playsample(SFX2, 0, 120, 120, 100, 0);
+    			 }
+        }
+	@end_script	
+	attack	63 77 22 34 1 1 1 0 15 10
+	dropv	2 2 0
+	@cmd	checkPal2 "ANI_JUMP" 7
+	frame	data/chars/hawkeye/r4.gif
+	bbox	56 80 25 31
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001	2 NULL() 4.3
+	hitflash	flash3
+	sound	data/sounds/cap02.wav
+	frame	data/chars/hawkeye/r2.gif
+	attack	69 57 44 52 1 1 0 0 15 10
+	dropv	3.2 3.1 0
+	delay	3
+	frame	data/chars/hawkeye/diag.gif
+	attack	0
+	frame	data/chars/hawkeye/diag2.gif
+	attack	69 57 44 52 1 1 0 0 15 10
+	frame	data/chars/hawkeye/diag.gif
+	attack	0
+	frame	data/chars/hawkeye/diag2.gif
+	attack	69 57 44 52 1 1 0 0 15 10
+	frame	data/chars/hawkeye/diag.gif
+	attack	0
+	frame	data/chars/hawkeye/diag2.gif
+	attack	69 57 44 52 1 1 0 0 15 10
+	frame	data/chars/hawkeye/diag.gif
+	attack	0
+	hitflash	flash4
+	frame	data/chars/hawkeye/diag2.gif
+	attack	69 57 44 52 1 1 0 0 15 10
+	dropv	3.0 2 0
+	frame	data/chars/hawkeye/diag.gif
+	attack	0
+	frame	data/chars/hawkeye/diag2.gif
+	attack	0
+	delay	5
+	@cmd	velo001	1 NULL() 2.0
+	sound	data/chars/hawkeye/expa.wav
+	frame	data/chars/hawkeye/r2.gif
+	frame	data/chars/hawkeye/r1.gif
+	frame	data/chars/hawkeye/r3.gif
+	frame	data/chars/hawkeye/r4.gif
+	frame	data/chars/hawkeye/r2.gif
+	frame	data/chars/hawkeye/free21.gif
+	delay	10
+	@cmd	shooter "farrow" 10 42 -1 6 0 0
+	frame	data/chars/hawkeye/free22.gif
+	frame	data/chars/hawkeye/j2.gif
+	delay	40
+	frame	data/chars/hawkeye/j3.gif
+	delay	10
+	frame	data/chars/hawkeye/land.gif
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	freespecial20
+	delay	8
+	offset	68 110
+	@cmd	checkStageType "bonus" "ANI_CANT"
+	@cmd	checkStageType "truck" "ANI_CANT"
+	@cmd	checkHelper "ANI_CANT"
+	@cmd	antiwallanim -15 30 0 "ANI_CANT"
+	frame	data/chars/hawkeye/free13.gif
+	@cmd	randSound0 "chars/hawkeye/call1.wav" "chars/hawkeye/call2.wav"
+	frame	data/chars/hawkeye/free13-2.gif
+	delay	6
+	frame	data/chars/hawkeye/free13-3.gif
+	delay	60
+	@cmd	spawnAni "aHelper" -40 20 1 "ANI_IDLE" 0 0 0
+	frame	data/chars/hawkeye/select2.gif
+	delay	6
+	frame	data/chars/hawkeye/free13-3.gif
+	frame	data/chars/hawkeye/free13-2.gif
+	frame	data/chars/hawkeye/free13.gif
+		
+anim	freespecial4
+	loop	0
+	delay	6
+	offset	68 110
+	landframe	12
+	Energycost	100 1 0
+	@cmd	randSound0 "chars/hawkeye/hyper.wav" "chars/hawkeye/hyper2.wav"
+	@cmd	spawn01 "super" 0 25 0
+	frame	data/chars/hawkeye/land.gif
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	leaper	-2 3.5 0
+	frame	data/chars/hawkeye/j3.gif
+	delay	4
+	frame	data/chars/hawkeye/rj4.gif
+	frame	data/chars/hawkeye/rj3.gif
+	frame	data/chars/hawkeye/rj5.gif
+	frame	data/chars/hawkeye/rj2.gif
+	frame	data/chars/hawkeye/rj1.gif
+	frame	data/chars/hawkeye/hyper1.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "harrow" 23 43 0
+	frame	data/chars/hawkeye/hyper2.gif
+	delay	12
+	frame	data/chars/hawkeye/hyper3.gif
+	frame	data/chars/hawkeye/j3.gif
+	delay	500
+	frame	data/chars/hawkeye/j.gif
+	delay	12
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	freespecial5
+	loop	0
+	delay	12
+	offset	68 110
+	bbox	55 52 24 58
+	frame	data/chars/hawkeye/att21.gif
+	delay	25
+	attack	-400 -10 800 200 450 1 1 1 0 100
+	bbox	68 55 29 55
+	@cmd	refill 200
+	frame	data/chars/hawkeye/att22.gif
+		
+anim	freespecial6
+	loop	0
+	delay	40
+	offset	68 110
+	bbox	60 55 25 55
+	@cmd	block 1
+	frame	data/chars/hawkeye/bl.gif
+		
+anim	freespecial7
+	loop	0
+	delay	30
+	offset	68 110
+	bbox	50 56 40 54
+	frame	data/chars/hawkeye/free11.gif
+	delay	4
+	frame	data/chars/hawkeye/free12b.gif
+	@cmd	shooter "triarrow" 10 42 -1 8 0 0
+	sound	data/chars/hawkeye/arrow.wav
+	frame	data/chars/hawkeye/free12c.gif
+	frame	data/chars/hawkeye/free11.gif
+	frame	data/chars/hawkeye/free12b.gif
+	@cmd	shooter "triarrow" 10 42 -1 8 0 0
+	sound	data/chars/hawkeye/arrow.wav
+	frame	data/chars/hawkeye/free12c.gif
+	frame	data/chars/hawkeye/free11.gif
+	frame	data/chars/hawkeye/free12b.gif
+	@cmd	shooter "triarrow" 10 42 -1 8 0 0
+	sound	data/chars/hawkeye/arrow.wav
+	frame	data/chars/hawkeye/free12c.gif
+	delay	20
+	frame	data/chars/hawkeye/free12.gif
+	delay	10
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	freespecial8
+	loop	0
+	delay	6
+	offset	68 110
+	Energycost	5 1 0
+	bbox	50 56 40 54
+	frame	data/chars/hawkeye/free13.gif
+	@script
+
+   void self = getlocalvar("self"); // Get calling entity.
+   int arrowControl = getlocalvar("arrowControl"+self); // Get arrowControld state
+
+	//if(arrowControl==NULL()){ // Localvar empty?
+        //setlocalvar("arrowControl"+self, 0);
+        //arrowControl = 0;
+        //}
+
+        if (frame==4)
+        {
+	 if (arrowControl==0){
+	 int SFX = loadsample("data/chars/hawkeye/arrow2.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+	 shooter ("arrow",10,42,-1,7,0,0,0);
+	 mpadd (2);
+	 //setlocalvar("arrowControl"+self, arrowControl+1);
+	 }
+
+	  if (arrowControl==1){
+	  int SFX = loadsample("data/chars/hawkeye/expa.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+	 shooter ("farrow",10,42,-1,4,0,0,0);
+	 //setlocalvar("arrowControl"+self, arrowControl+1);
+	 }
+
+	  else if (arrowControl==2){
+ 	 int SFX = loadsample("data/chars/hawkeye/net.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+	 shooter ("narrow",10,42,-1,4,0,0,0);
+	 //setlocalvar("arrowControl"+self, arrowControl+1);
+	 }
+
+	 else if (arrowControl==3){
+	 int SFX = loadsample("data/chars/hawkeye/shoot.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+	 shooter ("earrow",10,42,-1,4,0,0,0);
+	// setlocalvar("arrowControl"+self, arrowControl+1);
+	 }
+
+	 else if (arrowControl==4){
+	 int SFX = loadsample("data/chars/hawkeye/freeze.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+	 shooter ("frarrow",10,42,-1,3,0,0,0);
+	 //setlocalvar("arrowControl"+self, arrowControl+1);
+	 }
+
+	 else if (arrowControl==5){
+	 int SFX = loadsample("data/chars/hawkeye/triple.wav");
+	 playsample(SFX, 0, 120, 120, 100, 0);
+ 	 //setlocalvar("arrowControl"+self, 0);
+ 	 anichange("ANI_FREESPECIAL7");
+	 }
+
+
+        }
+
+	@end_script	
+	frame	data/chars/hawkeye/free13-2.gif
+	frame	data/chars/hawkeye/free11.gif
+	frame	data/chars/hawkeye/free12b.gif
+	sound	data/chars/hawkeye/arrow.wav
+	frame	data/chars/hawkeye/free12c.gif
+	delay	30
+	frame	data/chars/hawkeye/free12.gif
+	delay	6
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	freespecial9
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	60 55 25 55
+	@script
+
+	if (frame==0){
+       void self = getlocalvar("self"); // Get calling entity.
+   int arrowControl = getlocalvar("arrowControl"+self); // Get arrowControld state
+
+        if (arrowControl<5){
+        setlocalvar("arrowControl"+self, arrowControl+1);
+        arrowControl = arrowControl+1;
+        setglobalvar("arrowControl" + self, arrowControl);
+        } else {
+         setlocalvar("arrowControl"+self, 0);
+        arrowControl = 0;
+        setglobalvar("arrowControl" + self, arrowControl);
+        }
+        }
+
+
+
+
+	@end_script	
+	frame	data/chars/hawkeye/free13-3.gif
+	frame	data/chars/hawkeye/att0.gif
+	frame	data/chars/hawkeye/change1.gif
+	sound	data/sounds/grab.wav
+	frame	data/chars/hawkeye/change2.gif
+	frame	data/chars/hawkeye/change3.gif
+	frame	data/chars/hawkeye/id2.gif
+		
+anim	get
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	56 73 26 37
+	frame	data/chars/hawkeye/rise3.gif
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	grab
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	56 73 26 37
+	frame	data/chars/hawkeye/att31.gif
+		
+anim	grabattack
+	loop	0
+	delay	3
+	offset	68 110
+	bbox	52 56 33 54
+	hitflash	flash
+	frame	data/chars/hawkeye/change1.gif
+	frame	data/chars/hawkeye/bl.gif
+	attack	81 66 27 22 10 0 0 0 10 5
+	frame	data/chars/hawkeye/Att12b.gif
+	attack	0
+	frame	data/chars/hawkeye/bl.gif
+	frame	data/chars/hawkeye/change1.gif
+		
+anim	grabattack2
+	loop	0
+	delay	4
+	offset	68 110
+	bbox	52 56 33 54
+	hitflash	flash
+	frame	data/chars/hawkeye/change1.gif
+	frame	data/chars/hawkeye/bl.gif
+	attack	81 66 27 22 5 0 0 0 10 5
+	frame	data/chars/hawkeye/Att12b.gif
+	attack	0
+	frame	data/chars/hawkeye/bl.gif
+	attack	61 58 37 22 5 0 0 0 12 5
+	frame	data/chars/hawkeye/att31.gif
+	attack	0
+	frame	data/chars/hawkeye/bl.gif
+	attack	81 66 27 22 5 0 0 0 10 5
+	frame	data/chars/hawkeye/Att12b.gif
+	attack	0
+	frame	data/chars/hawkeye/bl.gif
+	attack	61 58 37 22 5 0 0 0 10 5
+	frame	data/chars/hawkeye/att31.gif
+	attack	0
+	frame	data/chars/hawkeye/bl.gif
+	frame	data/chars/hawkeye/change1.gif
+	frame	data/chars/hawkeye/att23.gif
+	delay	8
+	frame	data/chars/hawkeye/att21.gif
+	frame	data/chars/hawkeye/change1.gif
+	delay	8
+	attack	69 46 43 64 5 1 0 0 5 5
+	bbox	68 55 29 55
+	@script
+	if(frame==0)
+	{
+	       int SFX1 = loadsample("data/chars/hawkeye/att3.wav");
+	       int SFX2 = loadsample("data/chars/hawkeye/att4.wav");
+	       void vSelf = getlocalvar("self");
+      	       int r = rand()%30;
+      	       if(r > 0){
+               playsample(SFX1, 0, 120, 120, 100, 0);
+    			 }
+    			 if(r < 0){
+               playsample(SFX2, 0, 120, 120, 100, 0);
+    			 }
+        }
+	@end_script	
+	frame	data/chars/hawkeye/att1.gif
+	delay	25
+	frame	data/chars/hawkeye/att22.gif
+	delay	10
+	attack	0
+	frame	data/chars/hawkeye/att23.gif
+		
+anim	grabbackward
+	loop	0
+	delay	4
+	offset	68 110
+	hitflash	flash2
+	jumpframe	2 2 -4
+	landframe	7
+	frame	data/chars/hawkeye/j.gif
+	drawmethod	flipx 1
+	delay	16
+	sound	data/sounds/grab.wav
+	frame	data/chars/hawkeye/sp4.gif
+	attack	70 58 43 28 5 5 0 0 5 10
+	dropv	3 3
+	drawmethod	flipx 0
+	delay	16
+	frame	data/chars/hawkeye/sp7.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	4
+	frame	data/chars/hawkeye/free21.gif
+	delay	10
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	shooter "arrow" 10 42 -1 6 0 0
+	frame	data/chars/hawkeye/free22.gif
+	frame	data/chars/hawkeye/j3.gif
+	delay	500
+	frame	data/chars/hawkeye/j.gif
+	delay	12
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	grabforward
+	loop	0
+	delay	4
+	offset	68 110
+	hitflash	flash4
+	frame	data/chars/hawkeye/att23.gif
+	sound	data/chars/hawkeye/att3.wav
+	frame	data/chars/hawkeye/finish1.gif
+	sound	data/sounds/vuu.wav
+	frame	data/chars/hawkeye/finish2.gif
+	attack	68 66 57 50 15 5 0 0 5 20
+	dropv	2 3
+	frame	data/chars/hawkeye/finish3.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	24
+	frame	data/chars/hawkeye/finish4.gif
+	delay	10
+	attack	0
+	frame	data/chars/hawkeye/rise3.gif
+	frame	data/chars/hawkeye/att23.gif
+		
+anim	grabup
+	loop	0
+	delay	4
+	offset	68 110
+	hitflash	flash2
+	jumpframe	2 4 1
+	landframe	11
+	fastattack	1
+	sound	data/chars/hawkeye/att3.wav
+	frame	data/chars/hawkeye/rise.gif
+	attack	64 50 26 51 0 5 0 0 10 0
+	frame	data/chars/hawkeye/bl.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	sound	data/sounds/vuu2.wav
+	frame	data/chars/hawkeye/sp3.gif
+	attack	61 30 36 48 15 5 0 0 15 10
+	dropv	3 1.5
+	delay	20
+	frame	data/chars/hawkeye/upper2.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	6
+	frame	data/chars/hawkeye/sp2.gif
+	delay	4
+	frame	data/chars/hawkeye/rj1.gif
+	delay	20
+	frame	data/chars/hawkeye/hyper1.gif
+	delay	4
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 23 43 0
+	frame	data/chars/hawkeye/hyper2.gif
+	delay	12
+	frame	data/chars/hawkeye/hyper3.gif
+	frame	data/chars/hawkeye/j3.gif
+	delay	500
+	frame	data/chars/hawkeye/j.gif
+	delay	12
+	sound	data/chars/ironman/run.wav
+	frame	data/chars/hawkeye/rise.gif
+		
+anim	idle
+	loop	1
+	delay	15
+	offset	68 110
+	bbox	56 55 24 55
+	@script
+
+   void self = getlocalvar("self"); // Get calling entity.
+   int arrowControl = getlocalvar("arrowControl"+self); // Get arrowControld state
+
+	if(arrowControl==NULL()){ // Localvar empty?
+        setlocalvar("arrowControl"+self, 0);
+        arrowControl = 0;
+        }
+
+	@end_script	
+	frame	data/chars/hawkeye/id1.gif
+	frame	data/chars/hawkeye/id2.gif
+	frame	data/chars/hawkeye/id3.gif
+	frame	data/chars/hawkeye/id2.gif
+		
+anim	jump
+	loop	0
+	delay	24
+	dropframe	1
+	cancel	0 2 0 d f a freespecial10
+	offset	68 110
+	bbox	56 49 26 50
+	frame	data/chars/hawkeye/j.gif
+	delay	8
+	frame	data/chars/hawkeye/j2.gif
+	delay	40
+	frame	data/chars/hawkeye/j3.gif
+		
+anim	jumpattack
+	loop	0
+	delay	8
+	offset	68 110
+	bbox	55 47 25 45
+	landframe	2
+	sound	data/chars/hawkeye/att3.wav
+	delay	12
+	frame	data/chars/hawkeye/j2.gif
+	delay	500
+	bbox	55 47 44 45
+	attack	68 55 46 48 25 1 0 0 0 10
+	dropv	2 3
+	@cmd	velo001 3 0 -3
+	frame	data/chars/hawkeye/j-att2.gif
+	bbox	50 64 35 47
+	attack	0 0 0 0 0 0 0 0 0 0
+	delay	10
+	frame	data/chars/hawkeye/land.gif
+	frame	data/chars/hawkeye/free13-3.gif
+		
+anim	jumpattack2
+	loop	0
+	delay	10
+	offset	68 110
+	bbox	58 57 38 46
+	attack10	64 64 42 50 15 0 0 0 0 15
+	sound	data/chars/hawkeye/att2.wav
+	frame	data/chars/hawkeye/j-att1.gif
+		
+anim	jumpland
+	bbox	0 0 0 0
+	loop	0
+	delay	10
+	offset	68 110
+	frame	data/chars/hawkeye/land.gif
+		
+anim	pain
+	loop	0
+	delay	3
+	offset	68 110
+	bbox	54 52 28 58
+	frame	data/chars/hawkeye/pain.gif
+	offset	70 110
+	frame	data/chars/hawkeye/pain.gif
+	offset	68 110
+	delay	10
+	frame	data/chars/hawkeye/pain.gif
+		
+anim	pain3
+	loop	0
+	bbox	52 52 33 58
+	@script
+	if(frame==0) {
+    	void self = getlocalvar("self");
+    	void e;
+
+    	clearspawnentry();
+    		setspawnentry("name", "glue");
+    	e = spawn();
+    	changeentityproperty(e,"parent",self); // <--- ADDED
+    	bindentity(e, self,0,1,30,-1,2); // <--- CHANGED
+    	}
+	@end_script	
+	offset	70 109
+	delay	5
+	drawmethod	tintmode 1
+	drawmethod	tintcolor 189_181_132
+	frame	data/chars/hawkeye/pain.gif
+	offset	72 109
+	frame	data/chars/hawkeye/pain.gif
+	delay	170
+	offset	70 109
+	frame	data/chars/hawkeye/pain.gif
+	offset	68 109
+	delay	5
+	frame	data/chars/hawkeye/pain.gif
+	offset	70 109
+	frame	data/chars/hawkeye/pain.gif
+	delay	5
+	offset	68 109
+	frame	data/chars/hawkeye/pain.gif
+		
+anim	rise
+	loop	0
+	delay	8
+	offset	68 110
+	frame	data/chars/hawkeye/rise2.gif
+	frame	data/chars/hawkeye/rise3.gif
+		
+anim	riseattack
+	loop	0
+	delay	10
+	offset	68 110
+	frame	data/chars/hawkeye/land.gif
+	attack	59 88 51 23 10 1 1 0 15 20
+	delay	4
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 3 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide3.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	@cmd	velo001 2 NULL() NULL()
+	frame	data/chars/hawkeye/slide3.gif
+	delay	10
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/slide.gif
+	@cmd	velo001 1 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/land.gif
+		
+anim	run
+	loop	1
+	delay	6
+	offset	68 110
+	bbox	56 55 24 55
+	frame	data/chars/hawkeye/run1.gif
+	sound	data/chars/ironman/run.wav
+	frame	data/chars/hawkeye/run2.gif
+	frame	data/chars/hawkeye/run3.gif
+	frame	data/chars/hawkeye/run4.gif
+		
+anim	runattack
+	loop	0
+	delay	10
+	offset	68 110
+	bbox	55 78 27 32
+	frame	data/chars/hawkeye/land.gif
+	attack	59 88 51 23 10 1 0 0 15 10
+	delay	4
+	bbox	40 86 70 24
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 3 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide3.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide1.gif
+	frame	data/chars/hawkeye/slide.gif
+	frame	data/chars/hawkeye/slide2.gif
+	frame	data/chars/hawkeye/slide.gif
+	@cmd	velo001 2 NULL() NULL()
+	frame	data/chars/hawkeye/slide3.gif
+	delay	10
+	frame	data/chars/hawkeye/slide.gif
+	bbox	55 78 27 32
+	@cmd	velo001 1 NULL() NULL()
+	sound	data/sounds/friction.wav
+	frame	data/chars/hawkeye/land.gif
+		
+anim	select
+	delay	8
+	offset	68 110
+	sound	data/chars/hawkeye/select.wav
+	frame	data/chars/hawkeye/free13.gif
+	frame	data/chars/hawkeye/free13-2.gif
+	delay	3
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/giro1.gif
+	frame	data/chars/hawkeye/giro2.gif
+	frame	data/chars/hawkeye/giro3.gif
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/giro1.gif
+	frame	data/chars/hawkeye/giro2.gif
+	frame	data/chars/hawkeye/giro3.gif
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/giro1.gif
+	frame	data/chars/hawkeye/giro2.gif
+	frame	data/chars/hawkeye/giro3.gif
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/giro1.gif
+	frame	data/chars/hawkeye/giro2.gif
+	frame	data/chars/hawkeye/giro3.gif
+	delay	6
+	frame	data/chars/hawkeye/free13-2.gif
+	delay	60
+	sound	data/sounds/grab.wav
+	frame	data/chars/hawkeye/select2.gif
+		
+anim	shock
+	loop	1 0 4
+	delay	3
+	landframe	4
+	offset	68 110
+	@cmd	spawn01 "fxspark" 0 20 1
+	frame	data/chars/hawkeye/pain3.gif
+	sound	data/sounds/shock.wav
+	frame	data/chars/hawkeye/shocked1.gif
+	frame	data/chars/hawkeye/pain3.gif
+	frame	data/chars/hawkeye/shocked2.gif
+	delay	10
+	frame	data/chars/hawkeye/fall2.gif
+		
+anim	spawn
+	loop	0
+	delay	10
+	seta	200
+	offset	68 110
+	bbox	56 49 26 50
+	sound	data/sounds/voices/hawke.wav
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" -23 43 0
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 93 43 -10
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 3 43 25
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 123 43 5
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 153 43 -20
+	frame	data/chars/hawkeye/j.gif
+	sound	data/chars/hawkeye/arrow.wav
+	@cmd	toss "darrow" 193 43 45
+	frame	data/chars/hawkeye/j.gif
+		
+anim	special
+	loop	0
+	delay	6
+	offset	68 110
+	energycost	10
+	mponly	2
+	fastattack	1
+	hitflash	flash4
+	jumpframe	0 3
+	landframe	12
+	hitfx	data/sounds/indirect.wav
+	sound	data/chars/hawkeye/special.wav
+	frame	data/chars/hawkeye/sp1.gif
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/sp2.gif
+	blast	45 41 27 65 15 1 0 1 10 15
+	frame	data/chars/hawkeye/sp3.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/sp4.gif
+	blast	62 45 60 64 15 1 0 1 10 15
+	frame	data/chars/hawkeye/sp7.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	sound	data/sounds/vuu4.wav
+	frame	data/chars/hawkeye/sp6.gif
+	flipframe	6
+	frame	data/chars/hawkeye/sp2.gif
+	blast	60 45 57 61 15 1 0 1 10 15
+	frame	data/chars/hawkeye/sp5.gif
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/hawkeye/sp6.gif
+	frame	data/chars/hawkeye/j3.gif
+	frame	data/chars/hawkeye/land.gif
+		
+anim	waiting
+	loop	1 1 5
+	delay	15
+	offset	68 110
+	bbox	56 55 24 55
+	unsummonframe	0
+	subentity	bioshawk
+	summonframe	0 -44 -92 0 0
+	frame	data/chars/hawkeye/id1.gif
+	frame	data/chars/hawkeye/id2.gif
+	frame	data/chars/hawkeye/id3.gif
+	frame	data/chars/hawkeye/id2.gif
+	frame	data/chars/hawkeye/id1.gif
+	frame	data/chars/hawkeye/id2.gif
+		
+anim	walk
+	loop	1
+	delay	15
+	offset	68 110
+	bbox	58 53 22 57
+	frame	data/chars/hawkeye/w1.gif
+	frame	data/chars/hawkeye/w2.gif
+	frame	data/chars/hawkeye/w3.gif
+		
+anim	walkoff
+	loop	0
+	delay	10
+	jumpframe	0 2 1
+	dropframe	1
+	landframe	2
+	offset	68 110
+	bbox	56 49 26 50
+	frame	data/chars/hawkeye/j.gif
+	delay	100
+	frame	data/chars/hawkeye/j3.gif
+	delay	10
+	frame	data/chars/hawkeye/land.gif
+		
+#|edited by openBor Stats v 0.67
+		

@@ -1,0 +1,47 @@
+name	frarrowe
+type	none
+shadow	0
+nolife  1
+speed   30
+Antigravity 100
+candamage player npc obstacle
+offscreenkill 600
+
+animationscript data/scripts/grabscript.c
+
+load freezefx2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	idle
+	delay	4
+	loop	1
+	offset	68 68
+	freeze	66 63 44 10 0 3 1 0 0 15
+	hitfx	data/sounds/freeze.wav
+	@cmd	spawn01 "freezefx2" 15 5 2
+	freeze	66 63 44 10 0 3 1 0 0 15
+	frame	data/chars/hawkeye/fra.png
+	frame	data/chars/hawkeye/fra2.png
+		
+#|edited by openBor Stats v 0.67
+		

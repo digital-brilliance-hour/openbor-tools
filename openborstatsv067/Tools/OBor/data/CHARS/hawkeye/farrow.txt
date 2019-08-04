@@ -1,0 +1,48 @@
+name	farrow
+type	none
+shadow	0
+nolife  1
+speed   30
+Antigravity 100
+candamage enemy obstacle
+
+
+
+animationscript data/scripts/grabscript.c
+
+
+
+
+
+
+
+
+
+anim	follow1
+	delay	3
+	loop	1
+	offset	68 68
+	hitflash	sboom
+	@script
+	void self = getlocalvar("self");
+	changeentityproperty(self, "candamage", "TYPE_PLAYER");
+	@end_script	
+	burn	81 63 34 8 50 1 0 0 5 15
+	dropv	3 3 0
+	@cmd	spawn01 "faiscah" 15 5 0
+	frame	data/chars/hawkeye/far1.gif
+	frame	data/chars/hawkeye/far2.gif
+		
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitflash	sboom
+	burn	81 63 34 8 50 1 0 0 5 15
+	dropv	3 3 0
+	@cmd	spawn01 "faiscah" 15 5 0
+	frame	data/chars/hawkeye/far1.gif
+	frame	data/chars/hawkeye/far2.gif
+		
+#|edited by openBor Stats v 0.67
+		

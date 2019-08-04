@@ -1,0 +1,57 @@
+name	narrow
+type	none
+shadow	0
+nolife  1
+Antigravity 100
+candamage enemy obstacle
+
+load net
+load netbig
+
+palette none
+
+animationscript data/scripts/grabscript.c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	follow6
+	delay	3
+	loop	0
+	offset	68 68
+	hitflash	flash2
+	hitfx	data/sounds/grab.wav
+	blast	69 60 44 13 5 0 0 1 5 15
+	frame	data/chars/hawkeye/na.gif
+	@cmd	suicide
+	frame	data/chars/hawkeye/na.gif
+		
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitflash	flash3
+	@cmd	ani0020 openborconstant("ANI_FOLLOW6") openborconstant("ANI_PAIN3")
+	attack3	69 60 44 13 0 0 0 1 5 10
+	frame	data/chars/hawkeye/na.gif
+		
+#|edited by openBor Stats v 0.67
+		

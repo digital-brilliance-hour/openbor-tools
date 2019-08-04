@@ -1,0 +1,95 @@
+name %FullName
+type npc
+health  105
+mp	100
+atchain	1 2 3 4 5 6
+gfxshadow	1
+speed   8.2
+jumpheight      4.9
+running	14 4 3 1 1
+hostile enemy
+subtype chase
+projectilehit player npc
+candamage enemy
+subject_to_screen	 1
+
+aggression 8
+
+anim	attack
+	delay	10
+	hitflash	fbubb
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+
+anim	faint
+        delay 7
+	loop	1
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+
+anim	fall
+        landframe 1
+        delay	14
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	freespecial
+	delay	10
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	idle
+        delay 7
+	loop	1
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	jump
+        delay 7
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	jumpattack
+	delay	7
+	hitflash	fbubb
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+
+anim	pain
+	delay	15
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	rise
+	delay	7
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	run
+	loop	1
+	delay	10
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+
+anim	walk
+	loop	1
+	delay	7
+        offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+#|edited by openBor Stats v 0.57
+		

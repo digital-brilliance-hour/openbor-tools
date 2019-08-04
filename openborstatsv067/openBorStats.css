@@ -1,0 +1,22 @@
+body {
+background-image:url('Bck.bmp');
+background-repeat:repeat;
+} 
+
+
+.Item
+{
+  display :block;
+	padding: 10px;	
+	border-radius:15px;
+	-moz-box-shadow: 0 0 5px 1px rgba(54, 54, 154, 0.1);
+  -webkit-box-shadow: 0 0 5px 1px rgba(54, 54, 154, 0.1);
+  box-shadow: 0 0 5px 1px rgba(54, 54, 154, 0.1);
+}
+
+.Title
+{
+  font-size: 24px;
+	font-style: bold;
+	text-align: center;
+}

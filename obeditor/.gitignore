@@ -1,0 +1,14 @@
+*.o
+*~
+*.pyc
+.sconsign.dblite
+config.log
+.sconf_temp/
+.sconf_temp/*
+src/.deps/
+src/.deps/*
+src/obeditor
+release
+release/*
+
+

@@ -1,0 +1,585 @@
+name	  War_Machine
+health	  100
+speed	  12
+mp 100
+type	  player
+shadow	  3
+gfxshadow 1
+icon	  data/chars/ironman/icon.pcx
+iconpain	  data/chars/ironman/iconpain.pcx
+icondie	  data/chars/ironman/icondie.pcx
+diesound  data/chars/ironman/die.wav
+makeinv	  3
+riseinv 1 1
+atchain   1 1 2 3
+bflash 		bflash
+jumpmove  3  2
+
+com       d f a freespecial
+com       d u a freespecial2
+com      d u d s freespecial4
+running   20  4.0  2  1  0
+
+animationscript data/scripts/grabscript.c
+
+parrow data/sprites/parrow.pcx -5 -90
+parrow2 data/sprites/parrow2.pcx -5 -90
+
+palette       data/chars/ironman/pal1.pcx
+alternatepal  data/chars/ironman/pal2.pcx
+
+
+load beam
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	57 51 26 52
+	hitflash	flash
+	hitfx	data/sounds/robohit1.wav
+	sound	data/chars/ironman/att_4-0.wav
+	frame	data/chars/ironman/att11.pcx
+	bbox	59 54 25 49
+	attack10	82 56 24 14 10 0 0 0 10 10
+	frame	data/chars/ironman/att12.pcx
+		
+anim	attack2
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	hitflash	flash2
+	hitfx	data/sounds/robohit2.wav
+	frame	data/chars/ironman/att21.pcx
+	delay	12
+	bbox	60 50 25 53
+	attack	71 47 35 18 10 0 0 0 10 10
+	sound	data/chars/ironman/att_4-1.wav
+	frame	data/chars/ironman/att22.pcx
+	delay	6
+	bbox	58 50 25 53
+	frame	data/chars/ironman/att23.pcx
+	attack	0
+	frame	data/chars/ironman/att22.pcx
+		
+anim	attack3
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	hitflash	flash3
+	hitfx	data/sounds/robohit3.wav
+	frame	data/chars/ironman/att31.pcx
+	delay	8
+	bbox	60 50 25 53
+	sound	data/chars/ironman/att_4-2.wav
+	frame	data/chars/ironman/att32.pcx
+	delay	16
+	bbox	58 50 25 53
+	attack	82 50 35 18 15 1 0 0 10 10
+	frame	data/chars/ironman/att33.pcx
+	delay	10
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/ironman/att32.pcx
+		
+anim	burn
+	loop	0
+	delay	60
+	landframe	2
+	offset	92 115
+		@script
+		if(frame==0)
+		{
+    void self = getlocalvar("self");
+    void e;
+    clearspawnentry();
+    setspawnentry("name", "burnP");
+    e = spawn();
+    bindentity(e, self,0,1,0,1,1);
+		}
+	@end_script	
+	frame	data/chars/misc/empty.gif
+	offset	92 115
+	delay	500
+	offset	66 103
+	frame	data/chars/ironman/fall3.pcx
+	bbox	0 0 0 0
+	delay	10
+	frame	data/chars/ironman/fall4.pcx
+		
+anim	fall
+	loop	0
+	delay	10
+	offset	66 103
+	landframe	3
+	frame	data/chars/ironman/fall1.pcx
+	frame	data/chars/ironman/fall2.pcx
+	delay	500
+	frame	data/chars/ironman/fall3.pcx
+	frame	data/chars/ironman/fall4.pcx
+		
+anim	freespecial
+	custknife	beam
+	throwframe	2 -1
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	49 47 38 56
+	Energycost	10 1 0
+	sound	data/chars/ironman/repulsor.wav
+	frame	data/chars/ironman/free1-11.pcx
+	bbox	52 44 30 59
+	frame	data/chars/ironman/free1-12.pcx
+	delay	3
+	bbox	50 51 32 52
+	sound	data/sounds/beam01.wav
+	frame	data/chars/ironman/free1-14.pcx
+	frame	data/chars/ironman/free1-15.pcx
+	frame	data/chars/ironman/free1-16.pcx
+	frame	data/chars/ironman/free1-17.pcx
+	delay	20
+	frame	data/chars/ironman/free1-13.pcx
+		
+anim	freespecial2
+	loop	0
+	delay	5
+	offset	66 103
+	bbox	56 58 29 41
+	hitflash	flash3
+	hitfx	data/sounds/robohit3.wav
+	Energycost	10 1 0
+	sound	data/chars/ironman/superior.wav
+	frame	data/chars/ironman/free2-11.pcx
+	frame	data/chars/ironman/free2-12.pcx
+	frame	data/chars/warmachine/free2-110.pcx
+	frame	data/chars/warmachine/free2-111.pcx
+	delay	6
+	@cmd	velo001 5 0 0
+	bbox	61 59 44 19
+	blast	62 59 57 19 35 1 0 0 10 10
+	sound	data/sounds/turbo.wav
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-13.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-14.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-13.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-14.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-13.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-14.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-13.pcx
+	@cmd	spawn01 "po" -22 34 0
+	frame	data/chars/ironman/free2-14.pcx
+	delay	20
+	bbox	58 65 28 38
+	@cmd	velo001 2 0 0
+	attack	0
+	sound	data/sounds/friction.wav
+	frame	data/chars/ironman/free2-15.pcx
+		
+anim	freespecial4
+	loop	0
+	delay	6
+	offset	66 103
+	energycost	100 1 0
+	@cmd	spawn01 "super" 0 40 0
+	frame	data/chars/ironman/un00.pcx
+	sound	data/chars/ironman/uni.wav
+	frame	data/chars/ironman/un0.pcx
+	blast	75 34 50 42 250 1 0 0 0 10
+	delay	2
+	sound	data/chars/ironman/uni3.wav
+	@cmd	velo001 -0.5 0 0
+	frame	data/chars/ironman/un1.pcx
+	blast	75 34 55 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un2.pcx
+	blast	75 34 95 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un5.pcx
+	blast	75 34 105 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un6.pcx
+	blast	75 34 135 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un9.pcx
+	blast	75 34 155 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un10.pcx
+	blast	75 34 185 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un13.pcx
+	blast	75 34 205 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un14.pcx
+	blast	75 34 245 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un17.pcx
+	blast	75 34 275 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un18.pcx
+	blast	45 34 355 42 100 1 0 0 0 10
+	@cmd	velo001 -0.25 0 0
+	frame	data/chars/ironman/un20.pcx
+	blast	5 34 700 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un21.pcx
+	blast	45 34 355 42 100 1 0 0 0 10
+	frame	data/chars/ironman/un22.pcx
+	frame	data/chars/ironman/un23.pcx
+	frame	data/chars/ironman/un24.pcx
+	frame	data/chars/ironman/un25.pcx
+	blast	0 1 0 0 0 10 0 0 0 0
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un24.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un25.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un24.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	delay	4
+	frame	data/chars/ironman/un25.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un26.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un27.pcx
+	frame	data/chars/ironman/Free1-11.pcx
+	frame	data/chars/ironman/un26.pcx
+	delay	20
+	bbox	52 50 29 53
+	@cmd	velo001 0 0 0
+	frame	data/chars/ironman/Free1-11.pcx
+	delay	8
+	frame	data/chars/ironman/un0.pcx
+		
+anim	freespecial5
+	com	U U J freespecial5
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	hitfx	data/sounds/robohit3.wav
+	frame	data/chars/ironman/att31.pcx
+	delay	8
+	bbox	60 50 25 53
+	sound	data/chars/ironman/att_4-2.wav
+	frame	data/chars/ironman/att32.pcx
+	delay	16
+	bbox	58 50 25 53
+	attack	-400 -10 800 200 450 1 1 1 0 100
+	frame	data/chars/ironman/att33.pcx
+	delay	10
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/ironman/att32.pcx
+		
+anim	freespecial6
+	com	d S freespecial6
+	@cmd	block 1
+	loop	0
+	loop	0
+	delay	4
+	offset	66 103
+	bbox	45 55 30 48
+	sound	data/sounds/shield.wav
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+	frame	data/chars/ironman/bl2.pcx
+	frame	data/chars/ironman/bl3.pcx
+	frame	data/chars/ironman/bl4.pcx
+		
+anim	get
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	55 71 25 32
+	frame	data/chars/ironman/get.pcx
+		
+anim	idle
+	loop	1
+	delay	150
+	offset	66 103
+	bbox	52 50 29 53
+	frame	data/chars/ironman/id1.pcx
+	delay	30
+	frame	data/chars/ironman/id2.pcx
+		
+anim	jump
+	loop	0
+	delay	4
+	offset	66 103
+	bbox	49 52 32 40
+	frame	data/chars/ironman/j0.pcx
+	frame	data/chars/ironman/j1.pcx
+	frame	data/chars/ironman/j0.pcx
+	frame	data/chars/ironman/j1.pcx
+	delay	4
+	bbox	57 26 25 65
+	frame	data/chars/ironman/j2.pcx
+	frame	data/chars/ironman/j5.pcx
+	frame	data/chars/ironman/j2.pcx
+	frame	data/chars/ironman/j5.pcx
+	frame	data/chars/ironman/j2.pcx
+	frame	data/chars/ironman/j5.pcx
+	frame	data/chars/ironman/j2.pcx
+	frame	data/chars/ironman/j5.pcx
+	bbox	52 52 28 43
+	delay	4
+	frame	data/chars/ironman/j3.pcx
+	frame	data/chars/ironman/j4.pcx
+	frame	data/chars/ironman/j3.pcx
+	frame	data/chars/ironman/j4.pcx
+	frame	data/chars/ironman/j3.pcx
+	frame	data/chars/ironman/j4.pcx
+	frame	data/chars/ironman/j3.pcx
+	frame	data/chars/ironman/j4.pcx
+		
+anim	jumpattack
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	52 51 27 49
+	hitfx	data/sounds/robohit1.wav
+	sound	data/chars/ironman/att_4-1.wav
+	frame	data/chars/ironman/j-att11.pcx
+	bbox	54 52 22 34
+	frame	data/chars/ironman/j-att13.pcx
+	delay	20
+	attack	64 59 31 43 10 1 0 0 10 10
+	delay	20
+	attack	64 59 31 43 10 1 0 0 10 10
+	frame	data/chars/ironman/j-att12.pcx
+		
+anim	jumpattack2
+	loop	0
+	delay	5
+	offset	66 103
+	bbox	56 58 29 41
+	hitflash	flash2
+	hitfx	data/sounds/robohit2.wav
+	frame	data/chars/ironman/free2-11.pcx
+	sound	data/chars/ironman/att_4-2.wav
+	frame	data/chars/ironman/free2-12.pcx
+	frame	data/chars/warmachine/free2-110.pcx
+	frame	data/chars/warmachine/free2-111.pcx
+	delay	6
+	dive	3 1.3
+	bbox	61 59 44 19
+	attack	78 59 57 19 15 1 0 0 10 10
+	sound	data/sounds/turbo.wav
+	frame	data/chars/ironman/free2-13b.pcx
+	frame	data/chars/ironman/free2-14b.pcx
+	frame	data/chars/ironman/free2-13b.pcx
+	frame	data/chars/ironman/free2-14b.pcx
+	frame	data/chars/ironman/free2-13b.pcx
+	frame	data/chars/ironman/free2-14b.pcx
+	frame	data/chars/ironman/free2-13b.pcx
+	frame	data/chars/ironman/free2-14b.pcx
+	delay	20
+	bbox	58 65 28 38
+	attack	0
+	frame	data/chars/ironman/free2-15.pcx
+		
+anim	jumpland
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	55 71 25 32
+	frame	data/chars/ironman/get.pcx
+		
+anim	pain
+	loop	0
+	delay	3
+	offset	66 103
+	bbox	53 48 25 55
+	frame	data/chars/ironman/pain.pcx
+	offset	68 103
+	delay	6
+	frame	data/chars/ironman/pain.pcx
+	offset	66 103
+	delay	10
+	frame	data/chars/ironman/pain.pcx
+		
+anim	rise
+	loop	0
+	delay	10
+	offset	66 103
+	frame	data/chars/ironman/rise1.pcx
+	frame	data/chars/ironman/rise2.pcx
+		
+anim	riseattack
+	loop	0
+	delay	12
+	offset	66 103
+	hitflash	flash3
+	hitfx	data/sounds/robohit3.wav
+	frame	data/chars/ironman/rise1.pcx
+	delay	6
+	frame	data/chars/ironman/rise2.pcx
+	delay	8
+	sound	data/chars/ironman/att_4-2.wav
+	frame	data/chars/ironman/att32.pcx
+	delay	30
+	attack	82 50 35 18 12 1 0 1 0 0
+	frame	data/chars/ironman/att33.pcx
+	bbox	58 50 25 53
+	delay	10
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/ironman/att32.pcx
+		
+anim	run
+	loop	1
+	delay	10
+	offset	66 103
+	bbox	58 50 27 53
+	sound	data/chars/ironman/run.wav
+	frame	data/chars/ironman/r1.pcx
+	frame	data/chars/ironman/r2.pcx
+	frame	data/chars/ironman/r3.pcx
+	sound	data/chars/quicksilver/run.wav
+	frame	data/chars/ironman/r4.pcx
+	frame	data/chars/ironman/r5.pcx
+	frame	data/chars/ironman/r6.pcx
+		
+anim	runattack
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	58 50 27 53
+	hitflash	flash3
+	hitfx	data/sounds/robohit2.wav
+	frame	data/chars/ironman/rise2.pcx
+	sound	data/chars/ironman/att_4-3.wav
+	frame	data/chars/ironman/r2.pcx
+	delay	6
+	bbox	59 54 25 49
+	blast	66 45 22 41 15 1 0 0 10 10
+	@cmd	velo001 4 0 0
+	sound	data/sounds/turbo.wav
+	frame	data/chars/ironman/ra1.pcx
+	frame	data/chars/ironman/ra2.pcx
+	frame	data/chars/ironman/ra1.pcx
+	frame	data/chars/ironman/ra2.pcx
+	delay	6
+	@cmd	velo001 2 0 0
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/ironman/r4.pcx
+	delay	6
+	frame	data/chars/ironman/r5.pcx
+	delay	16
+	sound	data/sounds/friction.wav
+	frame	data/chars/ironman/rise2.pcx
+		
+anim	select
+	delay	10
+	offset	66 103
+	sound	data/sounds/voices/ironman.wav
+	frame	data/chars/ironman/bl.pcx
+	frame	data/chars/ironman/free1-12.pcx
+	frame	data/chars/ironman/free1-11.pcx
+		
+anim	shock
+	loop	1 0 4
+	delay	3
+	landframe	4
+	offset	66 103
+	frame	data/chars/ironman/fall1.pcx
+	sound	data/sounds/shock.wav
+	frame	data/chars/ironman/shocked1.pcx
+	frame	data/chars/ironman/fall1.pcx
+	frame	data/chars/ironman/shocked2.pcx
+	delay	10
+	frame	data/chars/ironman/fall4.pcx
+		
+anim	special
+	energycost	10
+	mponly	2
+	loop	0
+	delay	6
+	offset	66 103
+	hitfx	data/sounds/robohit3.wav
+	frame	data/chars/ironman/sp1.pcx
+	frame	data/chars/ironman/sp2.pcx
+	hitflash	flash4
+	blast	60 45 60 27 15 0 0 1 10 10
+	sound	data/sounds/eblade.wav
+	frame	data/chars/ironman/sp3.pcx
+	blast	0 51 63 28 15 0 0 1 10 10
+	frame	data/chars/ironman/sp4.pcx
+	delay	8
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/ironman/sp5.pcx
+	delay	6
+	frame	data/chars/ironman/sp6.pcx
+	frame	data/chars/ironman/sp7.pcx
+	delay	20
+	frame	data/chars/warmachine/att53.pcx
+		
+anim	waiting
+	loop	1
+	delay	150
+	offset	66 103
+	unsummonframe	0
+	subentity	biosiron
+	summonframe	0 -44 -92 0 0
+	frame	data/chars/ironman/id1.pcx
+	delay	30
+	frame	data/chars/ironman/id2.pcx
+		
+anim	walk
+	loop	1
+	delay	10
+	offset	66 103
+	bbox	55 51 27 52
+	frame	data/chars/ironman/w1.pcx
+	frame	data/chars/ironman/w2.pcx
+	frame	data/chars/ironman/w3.pcx
+	frame	data/chars/ironman/w4.pcx
+	frame	data/chars/ironman/w5.pcx
+	frame	data/chars/ironman/w6.pcx
+	frame	data/chars/ironman/w7.pcx
+	frame	data/chars/ironman/w8.pcx
+		
+#|edited by openBor Stats v 0.62
+		

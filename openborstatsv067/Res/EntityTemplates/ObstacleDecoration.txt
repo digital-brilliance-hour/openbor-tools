@@ -1,0 +1,17 @@
+name  %FullName
+health	 1
+nolife  1
+noatflash 1
+type	 obstacle
+gfxshadow	1
+offscreenkill 1000000
+#icon	%Data%Name/%Nameicon.gif
+		
+anim	idle
+        loop	1
+	delay	120
+	offset	1 1
+	frame	%Data%Name/00.png
+		
+#|edited by openBor Stats v 0.51
+		

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SpriteTracer Readme</title>
+<style type="text/css">
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	background-color: #D7E0B8;
+	font-size: 12px;
+}
+table {margin-bottom: 15px;}
+div { width: 960px; background-color: #F0F0F0; padding: 10px; margin: 20px; border-style: solid; border-width: 1px; border-color: black;}
+td {background-color: #D7E0B8;}
+h1, h2 {text-decoration: underline;}
+.cy {
+	color: #0FF;
+}
+.red {
+	color: #F00;
+}
+.green {
+	color: #0F0;
+}
+.blu {
+	color: #00F;
+}
+.fus {
+	color: #F0F;
+}
+.whi {
+	color: #FFF;
+}
+.whi {
+	color: #999;
+}
+</style>
+</head>
+
+<body><div>
+  <h1>SpriteTracer 2.1</h1>
+  <p>By Grim (neuropod@gmail.com) - <a href="http://spritedatabase.net">http://spritedatabase.net</a><br />
+    <br />
+  This is a new app I developed to quickly cut the backgrounds out of video game screenshots.</p>
+<h2>Source, Target, &amp; Result</h2>
+  <p>Using this app requires you to provide a <em>source image</em> and one or moe <em>target images</em>. The <em>result images</em> will be produced from those by the app.</p>
+  <table width="920" border="0" align="left" cellpadding="4" cellspacing="0" style="clear: none">
+    <tr>
+      <td width="320"><strong>Source Examples</strong></td>
+      <td width="320"><strong>Target Example</strong></td>
+      <td width="320"><strong>Result Example</strong></td>
+    </tr>
+    <tr>
+      <td align="center" valign="bottom"><img src="readme/1.png" width="79" height="109" alt="Source" /><img src="readme/1-5.png" width="79" height="109" alt="Source 2" /></td>
+      <td><strong><img src="readme/2.png" width="320" height="282" alt="Target" /></strong></td>
+      <td><strong><img src="readme/3.png" width="320" height="282" alt="Target" /></strong></td>
+    </tr>
+    <tr>
+      <td>A sprite on its own (plus background color) makes an ideal source. But really all we're looking for is an image with the colors you want to keep; either of the images above will work equally well as the source.</td>
+      <td valign="top">The target should include the sprite you want to cut out, plus all the other undesirable elements like backgrounds, other characters, etc. Usually it'll be a screenshot. </td>
+      <td valign="top">The result is the program output! The target, minus all the colors that weren't found in the source!</td>
+    </tr>
+  </table><br/>
+  <h2><br />
+    <br />
+    <br />
+    <br />
+  </h2>
+  <h2>Interface</h2>
+  <p><img src="readme/GUI2.png" width="738" height="393" alt="GUI" /></p>
+  <h2>Using the App</h2>
+  <p>So you've got a source and one or more targets. Now you must load them into the app.</p>
+  <ol>
+    <li>Choose a source image. There are two ways you can do this.<br />
+      <br />
+<ul>
+        <li><img src="readme/open.gif" width="23" height="23" alt="Open" /> Open a file from your hard drive. (PNG or BMP)</li>
+        <li><img src="readme/paste.gif" width="23" height="23" alt="Paste" /> Paste an image that has been copied to the clipboard.<br />
+          <br />
+        </li>
+      </ul>
+    </li>
+    <li>The source image will now show in the source panel. <br />
+      The color count will also be updated to reflect how many colors are in the source image. (Most sprites will be 16 or less.) <br />
+      <br />
+    </li>
+  
+    <li>Choose one or more target images. Like the source image, you can open a file or paste an image from the clipboard. <br />
+      You can add more targets by opening additional files (one at a time or all at once) or pasting additional images. <br />
+      You can scroll through the list on the right to view all target images.<br />
+      <br />
+    </li>
+    <li>Click &quot;Go!&quot; to process all images. You will be able to view the newly edited images in the target panel, which is now technically the result panel.<br />
+      Again, you can scroll through the list to view each one.<br />
+      <br />
+    </li>
+    <li>You have a few options for exporting these new images:<br />
+      <br />
+  <ul>
+    <li><img src="readme/save.gif" width="23" height="23" alt="Save" /> Save the selected images straight to the hard drive as PNG files.</li>
+    <li><img src="readme/saveall.gif" width="23" height="23" alt="Save" /> Save <strong>all </strong>result images to the hard drive as PNG files.<br />
+      <br />
+<ul>
+  <li>In either case, each file will be numbered with the filename you enter as a prefix. <br />
+          ie, if you enter &quot;screen&quot; you will get screen1.png, screen2.png, etc.</li>
+  </ul>
+    </li>
+    <li><img src="readme/copy.gif" width="23" height="23" alt="Copy" /> You can also copy the selected image to the clipboard so you can paste it into your main graphics editor.<br />
+      <br />
+    </li>
+    </ul>
+    </li>
+    <li>That's it, you're done!<br />
+    </li>
+  </ol>
+  <h2>Other Features</h2>
+  <ul>
+    <li>You can delete the source and all target images. <strong>File &gt; Clear all<br />
+      </strong><br />
+    </li>
+    <li>You can also set the background color to be used in the editing process.<strong> File &gt; Set BG Color.</strong> </li>
+  </ul>
+<h2>Notes</h2>
+<ul>
+    <li>Large images, large amounts of target images, and source images with many colors may cause the program to run slowly or even crash.</li>
+    <li>This tool is best used with emulators lacking layer disable features, or games where such features are present but not that helpful.</li>
+    <li>You can load new targets while keeping the same source, and vice versa.</li>
+  </ul>
+<h2>Version History</h2>
+<ul>
+ <li><strong>2.1 (2/5/2012)</strong>
+<ul>
+  <li>Added keyboard shortcuts.</li>
+  <li>Improved memory management (open files can now be changed or deleted by other applications.)</li>
+ <br />
+      </li>
+    </ul>
+  </li>
+  <li><strong>2.0 (1/10/2012)</strong>
+<ul>
+  <li>Added the ability to store multiple target images, and updated other features accordingly.</li>
+  <li>Added Save All feature.</li>
+  <li>Improved layout slightly.</li>
+      <li>Added better BG Color selection using ColorDialog.<br />
+        <br />
+      </li>
+    </ul>
+  </li>
+  <li><strong>1.0 (1/05/2012)</strong>
+<ul>
+  <li>Initial release; able to process one target image at a time.</li>
+  </ul>
+  </li>
+  </ul>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

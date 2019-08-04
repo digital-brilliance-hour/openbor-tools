@@ -1,0 +1,39 @@
+name	parrow
+type	none
+shadow	0
+nolife  1
+
+Antigravity 100
+candamage player npc 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitfx	data/sounds/cut1.wav
+	hitflash	cut1
+	attack4	101 86 39 19 20 5 0 0 15 15
+	DOT	1 600 4 2 100
+	forcemap	7 6
+	frame	data/chars/hawkeye/pt1.png
+	frame	data/chars/hawkeye/pt2.png
+	frame	data/chars/hawkeye/pt3.png
+		
+#|edited by openBor Stats v 0.67
+		

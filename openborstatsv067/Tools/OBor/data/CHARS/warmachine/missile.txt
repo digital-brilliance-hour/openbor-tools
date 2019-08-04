@@ -1,0 +1,47 @@
+name missile
+speed 24
+jumpheight 0
+type none
+gfxshadow 1
+Antigravity 100
+
+animationscript data/scripts/grabscript.c
+
+palette data/chars/warmachine/boom_1251-0.pcx
+
+
+
+
+
+
+
+anim	attack1
+	delay	4
+	loop	0
+	offset	8 8
+	sound	data/sounds/fogo02.wav
+	frame	data/chars/warmachine/boom_1251-0.pcx
+	offset	11 12
+	frame	data/chars/warmachine/boom_1251-1.pcx
+	offset	16 16
+	frame	data/chars/warmachine/boom_1251-2.pcx
+	offset	14 14
+	frame	data/chars/warmachine/boom_1251-3.pcx
+	offset	16 16
+	frame	data/chars/warmachine/boom_1251-4.pcx
+		
+anim	idle
+	delay	6
+	loop	1
+	offset	11 7
+	hitflash	flash3
+	burn	1 0 18 15 35 1 0 0 0 0
+	dropv	3 3 0
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/miss_1250-0.pcx
+	offset	8 7
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/miss_1250-1.pcx
+		
+#|edited by openBor Stats v 0.62
+		

@@ -1,0 +1,47 @@
+name %FullName
+type enemy
+health  100
+gfxshadow	1
+speed   10
+
+
+anim	idle
+	loop	1
+	delay   7
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+anim	pain
+	delay	18
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+	
+anim    walk
+	loop	1
+	delay   7
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+	
+anim    attack1
+	delay   7
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+	
+anim    fall
+	delay   7
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+
+anim    rise
+	delay   7
+	offset	52 98
+        bbox	42 14 24 85
+	frame	%Data%Name/00.png
+		
+#|edited by openBor Stats v 0.59
+		

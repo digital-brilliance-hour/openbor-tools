@@ -1,0 +1,84 @@
+name darrow
+speed 13
+jumpheight 0
+type none
+gfxshadow 1
+Antigravity 100
+
+animationscript data/scripts/grabscript.c
+
+palette none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	delay	3
+	loop	0
+	offset	105 82
+	sound	data/sounds/jland.wav
+	frame	data/chars/hawkeye/dArrow5.gif
+	frame	data/chars/hawkeye/dArrow4.gif
+	frame	data/chars/hawkeye/dArrow4b.gif
+	delay	60
+	frame	data/chars/hawkeye/dArrow4c.gif
+	delay	3
+	frame	data/sprites/0empty.gif
+	frame	data/chars/hawkeye/dArrow4c.gif
+	frame	data/sprites/0empty.gif
+	frame	data/chars/hawkeye/dArrow4c.gif
+	frame	data/sprites/0empty.gif
+	frame	data/chars/hawkeye/dArrow4c.gif
+		
+anim	attack2
+	delay	20
+	loop	0
+	offset	105 82
+	frame	data/sprites/0empty.gif
+		
+anim	idle
+	delay	4
+	loop	1
+	offset	105 82
+	hitfx	data/sounds/cut1.wav
+	hitflash	cut1
+	@cmd	velo001	11 0 -6
+	attack	86 57 18 23 20 5 0 0 5 15
+	dropv	-4 4
+	frame	data/chars/hawkeye/dArrow.gif
+	frame	data/chars/hawkeye/dArrow2.gif
+	frame	data/chars/hawkeye/dArrow3.gif
+		
+#|edited by openBor Stats v 0.67
+		

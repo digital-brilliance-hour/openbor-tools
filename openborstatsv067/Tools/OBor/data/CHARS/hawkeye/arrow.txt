@@ -1,0 +1,70 @@
+name	arrow
+type	none
+shadow	0
+nolife  1
+
+Antigravity 100
+candamage enemy obstacle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	idle
+	delay	3
+	loop	1
+	offset	68 68
+	hitfx	data/sounds/cut1.wav
+	hitflash	cut1
+	blast	81 63 34 8 20 1 0 0 5 30
+		@script
+void self = getlocalvar("self");
+void parent = getentityproperty(self, "parent");
+
+    if(parent!=NULL()){
+    float x = getentityproperty(parent, "x");
+    float z = getentityproperty(parent, "z");
+    float a = getentityproperty(parent, "a");
+    changeentityproperty(self, "position", x, z-2, 0);
+      float Health = getentityproperty(parent,"health");
+
+      if(Health>0){
+    changeentityproperty(self, "position", x, z-2, 0);
+      } else {
+        killentity(self);
+      }
+    }
+	@end_script	
+	frame	data/chars/hawkeye/arrow.gif
+	frame	data/chars/hawkeye/arrow2.gif
+	frame	data/chars/hawkeye/arrow3.gif
+		
+anim	follow1
+	delay	3
+	loop	1
+	offset	68 68
+	hitfx	data/sounds/cut1.wav
+	hitflash	cut1
+	@script
+	void self = getlocalvar("self");
+	changeentityproperty(self, "candamage", "TYPE_PLAYER");
+	@end_script	
+	blast	81 63 34 8 10 1 0 0 5 30
+	frame	data/chars/hawkeye/arrow.gif
+	frame	data/chars/hawkeye/arrow2.gif
+	frame	data/chars/hawkeye/arrow3.gif
+		
+#|edited by openBor Stats v 0.67
+		

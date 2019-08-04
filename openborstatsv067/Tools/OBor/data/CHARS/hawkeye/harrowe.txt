@@ -1,0 +1,72 @@
+name harrowe
+speed 13
+jumpheight 0
+type none
+gfxshadow 1
+Antigravity 100
+
+animationscript data/scripts/grabscript.c
+
+palette none
+
+load fboom
+load gshock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	delay	4
+	loop	0
+	offset	105 82
+	gfxshadow	0
+	quakeframe	0 1 4
+	@cmd	spawn01 "gshock" 0 0 1
+	sound	data/sounds/shockfx.wav
+	shock	73 43 38 38 10 1 0 0 0 20
+	frame	data/chars/hawkeye/ha2.gif
+	frame	data/chars/hawkeye/ha3.gif
+	frame	data/chars/hawkeye/ha2.gif
+	frame	data/chars/hawkeye/ha3.gif
+	frame	data/chars/hawkeye/ha2.gif
+	frame	data/chars/hawkeye/ha3.gif
+		
+anim	idle
+	delay	4
+	loop	0
+	offset	105 82
+	@cmd	velo001	6 0 -6
+	frame	data/chars/hawkeye/ha1.png
+		
+#|edited by openBor Stats v 0.67
+		

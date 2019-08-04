@@ -1,0 +1,80 @@
+name harrow
+speed 13
+jumpheight 0
+type none
+gfxshadow 1
+Antigravity 100
+
+animationscript data/scripts/grabscript.c
+
+palette none
+
+load fboom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	delay	4
+	loop	0
+	offset	105 82
+	gfxshadow	0
+	quakeframe	0 1 4
+	@cmd	spawn000 "fboom" -20 0 0
+	@cmd	shooter2 "fpillar" 15 0 0 2 0 0
+	@cmd	shooter2 "fpillar" -15 0 0 -2 0 0
+	sound	data/sounds/sboom2.wav
+	burn	41 45 43 39 100 1 0 0 0 20
+	frame	data/chars/misc/ward/boom1.gif
+	delay	2
+	frame	data/chars/misc/empty.gif
+	delay	6
+	burn	21 21 78 63 100 1 0 0 0 20
+	frame	data/chars/misc/ward/boom2.gif
+	delay	2
+	frame	data/chars/misc/empty.gif
+	delay	6
+	frame	data/chars/misc/ward/boom3.gif
+	delay	2
+	frame	data/chars/misc/empty.gif
+	delay	6
+	frame	data/chars/misc/ward/boom4.gif
+		
+anim	idle
+	delay	4
+	loop	0
+	offset	105 82
+	@cmd	velo001	6 0 -6
+	frame	data/chars/hawkeye/ha1.png
+		
+#|edited by openBor Stats v 0.67
+		

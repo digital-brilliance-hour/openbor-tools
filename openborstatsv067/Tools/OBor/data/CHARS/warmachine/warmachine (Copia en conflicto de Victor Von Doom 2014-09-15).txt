@@ -1,0 +1,827 @@
+name   War_Machine
+health	  180
+speed	  11
+mp 80
+type	  player
+shadow	  3
+gfxshadow 1
+icon	  data/chars/warmachine/icon.pcx 1
+iconpain  data/chars/warmachine/iconpain.pcx 1
+diesound  data/chars/warmachine/die.wav
+makeinv	  3
+riseinv 1 1
+atchain   1 2 3 4
+jumpmove  3  2
+combostyle 2
+
+
+com       d f a freespecial
+com       d u a freespecial2
+com      d u d s freespecial4
+com	a2 freespecial6
+running   22  4.0  2  1  0
+
+bflash 		bflash
+
+animationscript data/scripts/grabscript.c
+
+parrow data/sprites/parrow.pcx -5 -90
+parrow2 data/sprites/parrow2.pcx -5 -90
+
+palette       data/chars/warmachine/pal1.pcx
+alternatepal  data/chars/warmachine/pal5.pcx
+alternatepal  data/chars/warmachine/pal3.pcx
+alternatepal  data/chars/warmachine/pal4.pcx
+alternatepal  data/chars/warmachine/pal8.pcx
+alternatepal  data/chars/warmachine/pal7.pcx
+
+alternatepal  data/chars/warmachine/freeze.pcx
+alternatepal  data/chars/warmachine/venon.pcx
+
+fmap 6
+hmap 7 7
+
+load ward
+load bioswar
+load missile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+anim	attack1
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	57 51 26 52
+	hitfx	data/sounds/robohit1.wav
+	sound	data/chars/warmachine/att_4-0.wav
+	hitflash	flash
+	frame	data/chars/warmachine/att11.pcx
+	bbox	59 54 25 49
+	attack10	72 49 39 30 10 0 0 0 10 10
+	frame	data/chars/warmachine/att12.pcx
+		
+anim	attack2
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	hitfx	data/sounds/robohit1.wav
+	frame	data/chars/warmachine/att21.pcx
+	delay	12
+	bbox	60 50 25 53
+	attack	69 44 38 29 10 0 0 0 10 10
+	sound	data/chars/warmachine/att_4-0.wav
+	hitflash	flash2
+	frame	data/chars/warmachine/att22.pcx
+	delay	6
+	bbox	58 50 25 53
+	attack	0
+	frame	data/chars/warmachine/att23.pcx
+		
+anim	attack3
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	hitfx	data/sounds/robohit2.wav
+	frame	data/chars/warmachine/att41.pcx
+	delay	8
+	bbox	60 50 25 53
+	sound	data/chars/warmachine/att_4-1.wav
+	frame	data/chars/warmachine/att32.pcx
+	delay	10
+	bbox	58 50 25 53
+	attack	71 45 45 30 15 0 0 0 10 10
+	hitflash	flash3
+	frame	data/chars/warmachine/att42.pcx
+	delay	10
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/free2-15.pcx
+		
+anim	attack4
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+				@script
+    if(frame==0){
+      void vSelf = getlocalvar("self");
+      int r = rand()%30;
+
+      if(r > 0){
+        changeentityproperty(vSelf, "animation", openborconstant("ANI_CHARGEATTACK"));
+      }
+    }
+	@end_script	
+	hitfx	data/sounds/robohit3.wav
+	frame	data/chars/warmachine/att51.pcx
+	delay	12
+	bbox	60 50 25 53
+	hitflash	flash4
+	attack	77 45 39 27 10 1 0 0 10 10
+	sound	data/chars/warmachine/att_4-2.wav
+	frame	data/chars/warmachine/att52.pcx
+	delay	20
+	bbox	58 50 25 53
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/att53.pcx
+		
+anim	burn
+	loop	0
+	delay	60
+	landframe	2
+	offset	92 115
+		@script
+		if(frame==0)
+		{
+    void self = getlocalvar("self");
+    void e;
+    clearspawnentry();
+    setspawnentry("name", "burnP");
+    e = spawn();
+    bindentity(e, self,0,1,0,1,1);
+		}
+	@end_script	
+	frame	data/chars/misc/empty.gif
+	offset	92 115
+	delay	500
+	offset	66 103
+	frame	data/chars/warmachine/fall3.pcx
+	bbox	0 0 0 0
+	delay	10
+	frame	data/chars/warmachine/fall4.pcx
+		
+anim	chargeattack
+	loop	0
+	delay	8
+	offset	66 103
+	fastattack	1
+	frame	data/chars/warmachine/att21.pcx
+	frame	data/chars/warmachine/sp1.pcx
+	delay	3
+	attack	62 49 41 14 2 0 0 0 2 15
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/tiro2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/tiro1.pcx
+	attack	62 49 41 14 2 0 0 0 2 15
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/tiro2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/tiro1.pcx
+	attack	62 49 41 14 2 0 0 0 2 15
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/tiro2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/tiro1.pcx
+	attack	62 49 41 14 2 0 0 0 2 15
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/tiro2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/tiro1.pcx
+	attack	62 49 41 14 8 1 0 0 2 15
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/tiro2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/tiro1.pcx
+	delay	30
+	frame	data/chars/warmachine/tiro1.pcx
+	delay	10
+	frame	data/chars/warmachine/free2-15.pcx
+		
+anim	fall
+	loop	0
+	delay	10
+	offset	66 103
+	landframe	3
+	frame	data/chars/warmachine/fall1.pcx
+	frame	data/chars/warmachine/fall2.pcx
+	delay	500
+	frame	data/chars/warmachine/fall3.pcx
+	frame	data/chars/warmachine/fall4.pcx
+		
+anim	follow1
+	loop	1 2
+	delay	4
+	offset	66 103
+	bbox	55 47 23 52
+	dive	1 2
+	sound	data/sounds/turbo.wav
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+		
+anim	freespecial
+	loop	0
+	delay	6
+	offset	66 103
+	bbox	54 47 38 56
+	Energycost	10 1 0
+	@cmd	spawn01 "sdust" 0 0 0
+	sound	data/chars/warmachine/repulsor.wav
+	frame	data/chars/warmachine/ca1.pcx
+	bbox	59 44 30 59
+	frame	data/chars/warmachine/ca2.pcx
+	delay	20
+	bbox	60 51 32 52
+	frame	data/chars/warmachine/ca3.pcx
+	delay	6
+	@cmd	toss "missile" 23 43 0
+	frame	data/chars/warmachine/ca4.pcx
+	delay	25
+	sound	data/sounds/missile.wav
+	frame	data/chars/warmachine/ca3.pcx
+	delay	10
+	frame	data/chars/warmachine/ca5.pcx
+	delay	20
+	frame	data/chars/warmachine/ca2.pcx
+		
+anim	freespecial2
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	56 58 29 41
+	fastattack	1
+	Energycost	10 1 0
+	hitflash	flash2
+	@cmd	spawn01 "sdust" 0 0 0
+	hitfx	data/sounds/robohit2.wav
+	sound	data/chars/warmachine/haha.wav
+	frame	data/chars/warmachine/fs1.pcx
+	delay	4
+	@cmd	velo001 3 0 0
+	bbox	57 53 31 49
+	dropv	0 9 0
+	attack	70 47 36 60 3 1 0 0 15 15
+	sound	data/sounds/turbo.wav
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/fs2.pcx
+	attack	0
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/fs3.pcx
+	dropv	1 10 0
+	attack	70 47 36 60 3 1 0 0 15 15
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/fs2.pcx
+	attack	0
+	@cmd	spawn01 "po" -22 0 0
+	frame	data/chars/warmachine/fs3.pcx
+	@cmd	spawn01 "po" -22 0 0
+	dropv	1 10 0
+	attack	72 47 40 50 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs4.pcx
+	attack	0
+	@cmd	spawn01 "po" -22 14 0
+	frame	data/chars/warmachine/fs5.pcx
+	dropv	9 10 0
+	attack	72 47 40 50 3 1 0 0 15 15
+	@cmd	spawn01 "po" -22 14 0
+	frame	data/chars/warmachine/fs4.pcx
+	attack	0
+	@cmd	spawn01 "po" -22 14 0
+	frame	data/chars/warmachine/fs5.pcx
+	delay	4
+	bbox	59 29 28 71
+	hitfx	data/sounds/robohit3.wav
+	hitflash	flash4
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 2 0 5
+	sound	data/sounds/turbo.wav
+	@cmd	spawn01 "po" 0 4 0
+	dropv	8 9 0
+	attack	62 18 52 80 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs6.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	0
+	frame	data/chars/warmachine/fs7.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	62 18 52 80 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs6.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	0
+	frame	data/chars/warmachine/fs7.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	62 18 52 80 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs6.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	0
+	frame	data/chars/warmachine/fs7.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	62 18 52 80 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs6.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	0
+	frame	data/chars/warmachine/fs7.pcx
+	@cmd	spawn01 "po" 0 4 0
+	dropv	10 9 0
+	attack	62 18 52 80 3 1 0 0 15 15
+	frame	data/chars/warmachine/fs6.pcx
+	@cmd	spawn01 "po" 0 4 0
+	attack	0
+	frame	data/chars/warmachine/fs7.pcx
+	offset	58 103
+	delay	10
+	bbox	57 26 25 65
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/j2.pcx
+	delay	4
+	offset	62 103
+	frame	data/chars/warmachine/j4.pcx
+	offset	66 103
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+		
+anim	freespecial4
+	loop	0
+	delay	10
+	offset	66 103
+	Energycost	80 1 0
+	sound	data/chars/warmachine/wd1.wav
+	@cmd	spawn01 "super" 0 25 0
+	frame	data/chars/warmachine/get.pcx
+	frame	data/chars/warmachine/free2-15.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	offset	39 73
+	delay	6
+	frame	data/chars/warmachine/wd3.pcx
+	@cmd	toss "ward" -20 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" 20 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" -10 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" 10 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" -15 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" 15 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" -20 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	@cmd	toss "ward" 20 53 0
+	frame	data/chars/warmachine/wd1.pcx
+	frame	data/chars/warmachine/wd2.pcx
+	frame	data/chars/warmachine/wd3.pcx
+	delay	12
+	frame	data/chars/warmachine/wd4.pcx
+	offset	66 103
+	frame	data/chars/warmachine/sp4.pcx
+		
+anim	freespecial5
+	com	U U J freespecial5
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	58 50 25 53
+	@cmd	refill 100
+	frame	data/chars/warmachine/att51.pcx
+	delay	12
+	bbox	60 50 25 53
+	hitflash	flash4
+	attack	-400 -10 800 200 450 1 1 1 0 100
+	sound	data/chars/warmachine/att_4-2.wav
+	frame	data/chars/warmachine/att52.pcx
+	delay	20
+	bbox	58 50 25 53
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/att53.pcx
+		
+anim	freespecial6
+	@cmd	block 1
+	loop	0
+	loop	0
+	delay	4
+	offset	66 103
+	bbox	45 55 30 48
+	sound	data/sounds/shield.wav
+	frame	data/chars/warmachine/bl.pcx
+	frame	data/chars/warmachine/bl2.pcx
+	frame	data/chars/warmachine/bl3.pcx
+	frame	data/chars/warmachine/bl4.pcx
+	frame	data/chars/warmachine/bl5.pcx
+	frame	data/chars/warmachine/bl2.pcx
+	frame	data/chars/warmachine/bl3.pcx
+	frame	data/chars/warmachine/bl4.pcx
+	frame	data/chars/warmachine/bl5.pcx
+	frame	data/chars/warmachine/bl2.pcx
+	frame	data/chars/warmachine/bl3.pcx
+	frame	data/chars/warmachine/bl4.pcx
+	frame	data/chars/warmachine/bl5.pcx
+	frame	data/chars/warmachine/bl2.pcx
+	frame	data/chars/warmachine/bl3.pcx
+	frame	data/chars/warmachine/bl4.pcx
+	frame	data/chars/warmachine/bl5.pcx
+	frame	data/chars/warmachine/bl.pcx
+		
+anim	freespecial7
+	loop	1 2
+	delay	8
+	offset	66 103
+	bbox	52 52 28 43
+	dive	0 0.15
+	energycost	2 1 0
+	@script
+	void self = getlocalvar("self");
+        void MPower = getentityproperty(self,"mp"); //get mp
+	if (MPower <= 2){
+    changeentityproperty(self, "animation", openborconstant("ANI_FOLLOW1"));
+	   }
+	@end_script	
+	@cmd	keymove 1.5
+	frame	data/chars/warmachine/j-att11.pcx
+	@cmd	keymove 1.5
+	frame	data/chars/warmachine/j-att13.pcx
+	delay	4
+	@cmd	keymove 1.5
+	@cmd	mpcost 1
+	sound	data/sounds/fly.wav
+	frame	data/chars/warmachine/fly1.pcx
+	@cmd	keymove 1.5
+	frame	data/chars/warmachine/fly2.pcx
+	@cmd	keymove 1.5
+	sound	data/sounds/fly.wav
+	frame	data/chars/warmachine/fly1.pcx
+	@cmd	keymove 1.5
+	frame	data/chars/warmachine/fly2.pcx
+		
+anim	get
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	55 71 25 32
+	frame	data/chars/warmachine/get.pcx
+		
+anim	idle
+	loop	1
+	delay	15
+	offset	66 103
+	bbox	56 50 29 53
+	frame	data/chars/warmachine/id1.pcx
+	frame	data/chars/warmachine/id2.pcx
+	frame	data/chars/warmachine/id3.pcx
+	frame	data/chars/warmachine/id2.pcx
+		
+anim	jump
+	loop	0
+	delay	4
+	offset	66 103
+	bbox	55 47 23 52
+	cancel	0 10 0 S freespecial7
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	delay	10
+	bbox	57 26 25 65
+	frame	data/chars/warmachine/j2.pcx
+	delay	4
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+		
+anim	jumpattack
+	loop	0
+	delay	8
+	offset	66 103
+	bbox	52 51 27 49
+	hitfx	data/sounds/robohit1.wav
+	sound	data/chars/warmachine/att_4-1.wav
+	frame	data/chars/warmachine/j-att11.pcx
+	bbox	54 52 22 34
+	frame	data/chars/warmachine/j-att13.pcx
+	delay	20
+	attack	65 63 33 39 10 1 0 0 10 10
+	delay	20
+	attack	65 63 33 39 10 1 0 0 10 10
+	@cmd	velo001 2 0 -2
+	frame	data/chars/warmachine/j-att12.pcx
+		
+anim	jumpattack2
+	loop	0
+	delay	12
+	offset	66 103
+	bbox	54 55 23 38
+	Energycost	10 1 0
+	hitflash	flash3
+	@script
+    void vSelf = getlocalvar("self");
+
+    if(frame==1){
+      int  iTime = openborvariant("elapsed_time");
+
+      changeentityproperty(vSelf, "velocity", 0, 0 , 0); // This is to stop entity from moving forward
+      changeentityproperty(vSelf, "tosstime", iTime + 80);
+    }
+	@end_script	
+	frame	data/chars/warmachine/sb0.pcx
+	bbox	53 49 25 48
+	sound	data/chars/warmachine/smart.wav
+	frame	data/chars/warmachine/sb1.pcx
+	delay	20
+	@cmd	toss "smb" 10 40 0
+	frame	data/chars/warmachine/sb2.pcx
+	delay	8
+	frame	data/chars/warmachine/sb1.pcx
+	frame	data/chars/warmachine/sb0.pcx
+		
+anim	jumpland
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	55 71 25 32
+	frame	data/chars/warmachine/get.pcx
+	frame	data/chars/warmachine/rise2.pcx
+		
+anim	pain
+	loop	0
+	delay	3
+	offset	66 103
+	bbox	53 48 25 55
+	frame	data/chars/warmachine/pain.pcx
+	offset	68 103
+	delay	6
+	frame	data/chars/warmachine/pain.pcx
+	offset	66 103
+	delay	10
+	frame	data/chars/warmachine/pain.pcx
+		
+anim	rise
+	loop	0
+	delay	10
+	offset	66 103
+	frame	data/chars/warmachine/rise1.pcx
+	frame	data/chars/warmachine/rise2.pcx
+		
+anim	riseattack
+	loop	0
+	delay	8
+	offset	66 103
+	frame	data/chars/warmachine/rise1.pcx
+	frame	data/chars/warmachine/rise2.pcx
+	frame	data/chars/warmachine/att51.pcx
+	delay	12
+	hitflash	flash4
+	attack	77 45 39 27 10 1 0 0 0 0
+	hitfx	data/sounds/robohit3.wav
+	sound	data/chars/warmachine/att_4-2.wav
+	frame	data/chars/warmachine/att52.pcx
+	delay	30
+	bbox	58 50 25 53
+	attack	0 0 0 0 0 0 0 0 0 0
+	frame	data/chars/warmachine/att53.pcx
+		
+anim	run
+	loop	1 1 3
+	delay	8
+	offset	66 103
+	bbox	58 50 27 53
+	sound	data/sounds/turbo.wav
+	frame	data/chars/warmachine/r1.pcx
+	frame	data/chars/warmachine/r2.pcx
+	frame	data/chars/warmachine/r3.pcx
+	frame	data/chars/warmachine/r2.pcx
+		
+anim	runattack
+	loop	0
+	delay	10
+	offset	66 103
+	bbox	58 50 27 53
+	bbox	58 50 25 53
+	hitflash	flash3
+	hitfx	data/sounds/robohit2.wav
+	frame	data/chars/warmachine/att41.pcx
+	delay	8
+	bbox	60 50 25 53
+	@cmd	spawn01 "sdust" 0 0 0
+	@cmd	velo001 4 0 0
+	sound	data/sounds/turbo.wav
+	frame	data/chars/warmachine/rr0.pcx
+	delay	4
+	bbox	58 50 25 53
+	blast	73 42 50 40 15 1 0 0 20 10
+	sound	data/chars/warmachine/att_4-1.wav
+	frame	data/chars/warmachine/rr1.pcx
+	frame	data/chars/warmachine/rr2.pcx
+	frame	data/chars/warmachine/rr1.pcx
+	frame	data/chars/warmachine/rr2.pcx
+	frame	data/chars/warmachine/rr1.pcx
+	frame	data/chars/warmachine/rr2.pcx
+	attack	0 0 0 0 0 0 0 0 0 0
+	@cmd	velo001 2 0 0
+	frame	data/chars/warmachine/rr2.pcx
+	delay	16
+	sound	data/sounds/friction.wav
+	frame	data/chars/warmachine/rise2.pcx
+		
+anim	select
+	delay	8
+	offset	66 103
+	sound	data/chars/warmachine/yahoo.wav
+	frame	data/chars/warmachine/sel1.pcx
+	frame	data/chars/warmachine/sel2.pcx
+	frame	data/chars/warmachine/sel3.pcx
+		
+anim	shock
+	loop	1 0 4
+	delay	3
+	landframe	4
+	offset	66 103
+	frame	data/chars/warmachine/fall1.pcx
+	sound	data/sounds/shock.wav
+	frame	data/chars/warmachine/shocked1.pcx
+	frame	data/chars/warmachine/fall1.pcx
+	frame	data/chars/warmachine/shocked2.pcx
+	delay	10
+	frame	data/chars/warmachine/fall4.pcx
+		
+anim	spawn
+	delay	2
+	offset	66 103
+	seta	200
+	sound	data/sounds/voices/warm.wav
+	frame	data/chars/warmachine/j3.pcx
+		
+anim	special
+	energycost	10
+	mponly	2
+	loop	0
+	delay	8
+	offset	66 103
+	flipframe	8
+	frame	data/chars/warmachine/att21.pcx
+	frame	data/chars/warmachine/sp1.pcx
+	delay	3
+	@cmd	spawn01 "gshot" 60 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp2.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	@cmd	spawn01 "gshot" 40 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp3.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	@cmd	spawn01 "gshot" 10 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp2.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	@cmd	spawn01 "gshot" 15 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp2.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	@cmd	spawn01 "gshot" 40 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp3.pcx
+	frame	data/chars/warmachine/sp4.pcx
+	@cmd	spawn01 "gshot" 60 0 0
+	sound	data/sounds/tiro04.wav
+	frame	data/chars/warmachine/sp2.pcx
+	delay	8
+	frame	data/chars/warmachine/sp4.pcx
+	frame	data/chars/warmachine/free2-15.pcx
+		
+anim	waiting
+	loop	1 1 5
+	delay	12
+	offset	66 103
+	bbox	56 50 29 53
+	unsummonframe	0
+	subentity	bioswar
+	summonframe	0 -44 -92 0 0
+	frame	data/chars/warmachine/id1.pcx
+	frame	data/chars/warmachine/id2.pcx
+	frame	data/chars/warmachine/id3.pcx
+	frame	data/chars/warmachine/id2.pcx
+	frame	data/chars/warmachine/id1.pcx
+	frame	data/chars/warmachine/id2.pcx
+		
+anim	walk
+	loop	1
+	delay	10
+	offset	66 103
+	bbox	55 51 27 52
+	frame	data/chars/warmachine/w1.pcx
+	frame	data/chars/warmachine/w2.pcx
+	frame	data/chars/warmachine/w3.pcx
+	frame	data/chars/warmachine/w4.pcx
+	frame	data/chars/warmachine/w5.pcx
+	frame	data/chars/warmachine/w6.pcx
+	frame	data/chars/warmachine/w7.pcx
+	frame	data/chars/warmachine/w8.pcx
+		
+anim	walkoff
+	loop	1 1 3
+	delay	4
+	offset	66 103
+	jumpframe	0 2 1
+	landframe	3
+	bbox	49 52 32 40
+	frame	data/chars/warmachine/j3.pcx
+	frame	data/chars/warmachine/j4.pcx
+	frame	data/chars/warmachine/j3.pcx
+	bbox	55 71 25 32
+	delay	8
+	frame	data/chars/warmachine/get.pcx
+		
+#|edited by openBor Stats v 0.67
+		
